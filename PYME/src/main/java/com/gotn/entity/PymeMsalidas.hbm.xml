@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="com.gotn.entity.PymeMsalidas" table="PYME_MSALIDAS">
+        <id name="msalId" type="long">
+            <column name="MSAL_ID" precision="18" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pymeSubetapa" class="com.gotn.entity.PymeSubetapa" fetch="select">
+            <column name="SUBETA_ID" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="200" not-null="true" />
+        </property>
+        <property name="creadoEl" type="date">
+            <column name="CREADO_EL" length="7" />
+        </property>
+        <property name="creadoPor" type="string">
+            <column name="CREADO_POR" length="50" />
+        </property>
+        <set name="pymeDsalidases" table="PYME_DSALIDAS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MSAL_ID" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.gotn.entity.PymeDsalidas" />
+        </set>
+    </class>
+</hibernate-mapping>

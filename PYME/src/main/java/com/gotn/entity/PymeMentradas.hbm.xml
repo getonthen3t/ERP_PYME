@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="com.gotn.entity.PymeMentradas" table="PYME_MENTRADAS">
+        <id name="mentId" type="big_decimal">
+            <column name="MENT_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pymeSubetapa" class="com.gotn.entity.PymeSubetapa" fetch="select">
+            <column name="SUBETA_ID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="creadoEl" type="date">
+            <column name="CREADO_EL" length="7" />
+        </property>
+        <property name="creadoPor" type="string">
+            <column name="CREADO_POR" length="200" />
+        </property>
+        <set name="pymeDentradases" table="PYME_DENTRADAS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MENT_ID" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.gotn.entity.PymeDentradas" />
+        </set>
+    </class>
+</hibernate-mapping>

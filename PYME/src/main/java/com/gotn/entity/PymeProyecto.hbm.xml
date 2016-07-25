@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="com.gotn.entity.PymeProyecto" table="PYME_PROYECTO">
+        <id name="proyId" type="long">
+            <column name="PROY_ID" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pymeEmpresa" class="com.gotn.entity.PymeEmpresa" fetch="select">
+            <column name="EMP_ID" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pymeDtipos" class="com.gotn.entity.PymeDtipos" fetch="select">
+            <column name="PROY_ESTADO" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="proyNombre" type="string">
+            <column name="PROY_NOMBRE" length="200" not-null="true">
+                <comment>Nombre del proyecto</comment>
+            </column>
+        </property>
+        <property name="proyDescripcion" type="string">
+            <column name="PROY_DESCRIPCION" length="1000" not-null="true" />
+        </property>
+        <property name="proyCreadoPor" type="string">
+            <column name="PROY_CREADO_POR" length="100" not-null="true" />
+        </property>
+        <property name="proyCreadoEl" type="date">
+            <column name="PROY_CREADO_EL" length="7" not-null="true" />
+        </property>
+        <set name="pymeSysSeguridads" table="PYME_SYS_SEGURIDAD" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PROY_ID" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.gotn.entity.PymeSysSeguridad" />
+        </set>
+        <set name="pymeFacncEncClis" table="PYME_FACNC_ENC_CLI" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PROY_ID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.gotn.entity.PymeFacncEncCli" />
+        </set>
+        <set name="pymeEtapas" table="PYME_ETAPA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PROY_ID" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.gotn.entity.PymeEtapa" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="com.gotn.entity.PymeNdEncCli" table="PYME_ND_ENC_CLI">
+        <id name="ndcliId" type="long">
+            <column name="NDCLI_ID" precision="18" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pymeDtiposByNdcliEstado" class="com.gotn.entity.PymeDtipos" fetch="select">
+            <column name="NDCLI_ESTADO" precision="22" scale="0" not-null="true">
+                <comment>ABIERTO/CERRADO</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="pymeDtiposByNdcliTipoFacnd" class="com.gotn.entity.PymeDtipos" fetch="select">
+            <column name="NDCLI_TIPO_FACND" precision="10" scale="0" not-null="true">
+                <comment>ARTICULOS/SERVICIOS</comment>
+            </column>
+        </many-to-one>
+        <property name="ndcliConsectivo" type="long">
+            <column name="NDCLI_CONSECTIVO" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="idSoc" type="big_decimal">
+            <column name="ID_SOC" precision="22" scale="0" />
+        </property>
+        <property name="ndcliSocNombre" type="string">
+            <column name="NDCLI_SOC_NOMBRE" length="200" />
+        </property>
+        <property name="ndcliTotalLocal" type="big_decimal">
+            <column name="NDCLI_TOTAL_LOCAL" precision="18" scale="3" />
+        </property>
+        <property name="ndcliTotalExtranjero" type="big_decimal">
+            <column name="NDCLI_TOTAL_EXTRANJERO" precision="18" scale="3" />
+        </property>
+        <property name="ndcliTipoCambio" type="string">
+            <column name="NDCLI_TIPO_CAMBIO" length="20" />
+        </property>
+        <property name="ndcliFechaDoc" type="date">
+            <column name="NDCLI_FECHA_DOC" length="7" />
+        </property>
+        <property name="ndcliContabilizacion" type="date">
+            <column name="NDCLI_CONTABILIZACION" length="7" />
+        </property>
+        <property name="ndcliDocBase" type="java.lang.Long">
+            <column name="NDCLI_DOC_BASE" precision="18" scale="0" />
+        </property>
+        <property name="ndcliDocDestino" type="java.lang.Long">
+            <column name="NDCLI_DOC_DESTINO" precision="18" scale="0" />
+        </property>
+        <property name="ndcliComentarios" type="string">
+            <column name="NDCLI_COMENTARIOS" length="200" />
+        </property>
+        <property name="proyId" type="big_decimal">
+            <column name="PROY_ID" precision="22" scale="0" not-null="true">
+                <comment>SE UTILIZA PARA DEFINIR CONSECUTIVO</comment>
+            </column>
+        </property>
+        <set name="pymeNdDetClis" table="PYME_ND_DET_CLI" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NDCLI_ID" precision="18" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.gotn.entity.PymeNdDetCli" />
+        </set>
+    </class>
+</hibernate-mapping>

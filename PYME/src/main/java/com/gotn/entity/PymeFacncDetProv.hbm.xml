@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="com.gotn.entity.PymeFacncDetProv" table="PYME_FACNC_DET_PROV">
+        <id name="facprovdId" type="long">
+            <column name="FACPROVD_ID" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pymeProductos" class="com.gotn.entity.PymeProductos" fetch="select">
+            <column name="PRODUC_ID" precision="18" scale="0" />
+        </many-to-one>
+        <many-to-one name="pymeFacncEncProv" class="com.gotn.entity.PymeFacncEncProv" fetch="select">
+            <column name="FACPROV_ID" precision="18" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="facprovdCantidad" type="java.lang.Long">
+            <column name="FACPROVD_CANTIDAD" precision="10" scale="0" />
+        </property>
+        <property name="facprovdDetalle" type="string">
+            <column name="FACPROVD_DETALLE" length="100" />
+        </property>
+        <property name="facprovdTotalLineaLocal" type="big_decimal">
+            <column name="FACPROVD_TOTAL_LINEA_LOCAL" precision="18" scale="3" />
+        </property>
+        <property name="facprovdTotalLineaExt" type="string">
+            <column name="FACPROVD_TOTAL_LINEA_EXT" length="20" />
+        </property>
+        <property name="facprovdCreadoPor" type="string">
+            <column name="FACPROVD_CREADO_POR" length="50" />
+        </property>
+        <property name="facprovdCreadoEl" type="date">
+            <column name="FACPROVD_CREADO_EL" length="7" />
+        </property>
+    </class>
+</hibernate-mapping>

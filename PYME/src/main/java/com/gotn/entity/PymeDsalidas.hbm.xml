@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="com.gotn.entity.PymeDsalidas" table="PYME_DSALIDAS">
+        <id name="dsalId" type="long">
+            <column name="DSAL_ID" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pymeProductos" class="com.gotn.entity.PymeProductos" fetch="select">
+            <column name="PRODUC_ID" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pymeDtiposByDsalTipoMov" class="com.gotn.entity.PymeDtipos" fetch="select">
+            <column name="DSAL_TIPO_MOV" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pymeMsalidas" class="com.gotn.entity.PymeMsalidas" fetch="select">
+            <column name="MSAL_ID" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pymeDtiposByDsalEstadoDoc" class="com.gotn.entity.PymeDtipos" fetch="select">
+            <column name="DSAL_ESTADO_DOC" precision="10" scale="0">
+                <comment>De la tabla de tipos-Estado de documento. Abierto/cerrado/aprobado</comment>
+            </column>
+        </many-to-one>
+        <property name="dsalCantidad" type="long">
+            <column name="DSAL_CANTIDAD" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="dsalFechaSalida" type="date">
+            <column name="DSAL_FECHA_SALIDA" length="7" />
+        </property>
+        <property name="dsalCreadoPor" type="string">
+            <column name="DSAL_CREADO_POR" length="50" />
+        </property>
+        <property name="dsalAutorizadoPor" type="string">
+            <column name="DSAL_AUTORIZADO_POR" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

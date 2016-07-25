@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="com.gotn.entity.PymeConsecutivos" table="PYME_CONSECUTIVOS">
+        <id name="consId" type="long">
+            <column name="CONS_ID" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="consTipodoc" type="long">
+            <column name="CONS_TIPODOC" precision="10" scale="0" not-null="true">
+                <comment>REFERENCIA A LA TABLA DE TIPOS</comment>
+            </column>
+        </property>
+        <property name="consInicial" type="long">
+            <column name="CONS_INICIAL" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="consActual" type="long">
+            <column name="CONS_ACTUAL" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="consFinal" type="long">
+            <column name="CONS_FINAL" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="proyId" type="long">
+            <column name="PROY_ID" precision="10" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
