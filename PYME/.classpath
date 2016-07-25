@@ -33,6 +33,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="libs/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="/home/asanchez/Documents/workspace-sts-3.8.0.RELEASE/PYME/libs/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="libs/ojdbc14.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

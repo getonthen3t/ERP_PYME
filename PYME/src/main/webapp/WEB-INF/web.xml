@@ -9,13 +9,16 @@
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
-    <url-pattern>/faces/</url-pattern>
+    <url-pattern>/faces/*</url-pattern>
   </servlet-mapping>
   <context-param>
   	<param-name>contextConfigLocation</param-name>
   	<param-value>/WEB-INF/applicationContext.xml</param-value>
   </context-param>
   <listener>
-  <listener-class>orm.springframework.web.context.ContextLoaderListener</listener-class>
+  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  <welcome-file-list>
+  	<welcome-file> views/tipoCambio/main.xhtml</welcome-file>
+  </welcome-file-list>
 </web-app>
