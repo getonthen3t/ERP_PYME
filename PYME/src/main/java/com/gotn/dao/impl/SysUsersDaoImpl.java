@@ -28,24 +28,20 @@ public class SysUsersDaoImpl implements ISysUsersDao   {
 		getSession().save(entidad);
 		
 	}
-
 	public void actualizarSysUser(PymeSysUsers entidad) {
 		getSession().update(entidad);
 		
 	}
-
 	public void eliminarSysUser(PymeSysUsers entidad) {
 		getSession().delete(entidad);
 		
 	}
-
 	public PymeSysUsers getSysUser(Integer id) {
 		return  (PymeSysUsers) getSession().get(PymeSysUsers.class, id);
 	}
-
-	public List<PymeSysUsers> getConsecutivos() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<PymeSysUsers> getSysUsers() {
+		return crearCriteria().list();
 	}
+	
 
 }
