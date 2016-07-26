@@ -12,7 +12,7 @@ import com.gotn.model.PymeDentradas;
 
 
 /*Creado por JJARA EL 2016-07-25*/
-@Repository("dentradasDao") /*La variable inyectada en el service se debe llamar igual*/
+@Repository("dentradasDaoImpl") /*La variable inyectada en el service se debe llamar igual*/
 public class DentradasDaoImpl implements IDentradasDao {
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/
@@ -25,22 +25,25 @@ public class DentradasDaoImpl implements IDentradasDao {
 		
 	}
 	public void guardarConsecutivo(PymeDentradas entidad) {
-		getSession().save(entidad);
+		// TODO Auto-generated method stub
+		
 	}
-
 	public void actualizarConsecutivo(PymeDentradas entidad) {
-		getSession().update(entidad);
+		// TODO Auto-generated method stub
+		
 	}
-
 	public void eliminarConsecutivo(PymeDentradas entidad) {
-		getSession().delete(entidad);
+		// TODO Auto-generated method stub
+		
 	}
-
 	public PymeDentradas getConsecutivo(Integer id) {
-		return  (PymeDentradas) getSession().get(PymeDentradas.class, id);
+		// TODO Auto-generated method stub
+		return null;
 	}
 	public List<PymeDentradas> getConsecutivos() {
-		return crearCriteria().list();
+		// TODO Auto-generated method stub
+		return null;
 	}
+	
 
 }

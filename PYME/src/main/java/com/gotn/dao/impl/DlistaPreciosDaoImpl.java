@@ -9,6 +9,8 @@ import com.gotn.dao.IDentradasDao;
 import com.gotn.dao.IDlistaPreciosDao;
 import com.gotn.model.PymeDlistaPrecios;
 
+import antlr.collections.List;
+
 
 
 /*Creado por JJARA EL 2016-07-25*/

@@ -10,6 +10,6 @@ public interface IMentradasDao {
 	void guardarMentradas(PymeMentradas entidad );
 	void actualizarMentradas(PymeMentradas entidad);
 	void eliminarMentradas(PymeMentradas entidad);
-	PymeMentradas getMentradas(Integer id);
+	PymeMentradas getMentrada(Integer id);
 	List<PymeMentradas> getMentradas();
 }

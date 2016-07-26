@@ -11,6 +11,6 @@ public interface IMlistaPreciosDao {
 	void guardarMlistaPrecios(PymeMlistaPrecios entidad );
 	void actualizarMlistaPrecios(PymeMlistaPrecios entidad);
 	void eliminarMlistaPrecios(PymeMlistaPrecios entidad);
-	PymeMlistaPrecios getMlistaPrecios(Integer id);
+	PymeMlistaPrecios getMlistaPrecio(Integer id);
 	List<PymeMlistaPrecios> getMlistaPrecios();
 }
