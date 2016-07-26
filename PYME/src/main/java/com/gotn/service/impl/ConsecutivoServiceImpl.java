@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.gotn.dao.IConsecutivoDao;
 import com.gotn.model.PymeConsecutivos;
 import com.gotn.service.IConsecutivoService;
-/*Creado por: asanchez 2016-07-25*/
+/*Creado por: jjara 2016-07-25*/
 @Service("consecutivoService")
 public class ConsecutivoServiceImpl implements IConsecutivoService {
 	@Autowired
