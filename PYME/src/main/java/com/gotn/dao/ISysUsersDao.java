@@ -12,5 +12,5 @@ public interface ISysUsersDao{
 	void actualizarSysUser(PymeSysUsers entidad);
 	void eliminarSysUser(PymeSysUsers entidad);
 	PymeSysUsers getSysUser(Integer id);
-	List<PymeSysUsers> getConsecutivos();
+	List<PymeSysUsers> getSysUsers();
 }
