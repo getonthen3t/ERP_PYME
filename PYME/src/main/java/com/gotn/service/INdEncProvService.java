@@ -5,9 +5,9 @@ import java.util.List;
 import com.gotn.model.PymeNdEncProv;
 
 public interface INdEncProvService {
-	public boolean guardarNdEncProv(INdEncProvService pojo);
-	public boolean actualizarNdEncProv(INdEncProvService pojo);
-	public boolean eliminarNdEncProv(INdEncProvService pojo);
-	public INdEncProvService getNdEncProv(int idNdEncProv);
-	public List<INdEncProvService> getNdEncProvs();
+	public boolean guardarNdEncProv(PymeNdEncProv pojo);
+	public boolean actualizarNdEncProv(PymeNdEncProv pojo);
+	public boolean eliminarNdEncProv(PymeNdEncProv pojo);
+	public PymeNdEncProv getNdEncProv(int idNdEncProv);
+	public List<PymeNdEncProv> getNdEncProvs();
 }

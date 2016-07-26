@@ -22,7 +22,7 @@ public class FacncEncProvDaoImpl implements IFacncEncProvDao {
 		return sessionFactory.getCurrentSession();
 	}
 	public Criteria crearCriteria(){ /*Se utiliza para armar criterios de busqueda segun la analogia de hibernate orientada a objetos*/
-		return getSession().createCriteria(PymeDlistaPrecios.class);
+		return getSession().createCriteria(PymeFacncEncProv.class);
 		
 	}
 	public void guardarFacncEncProv(PymeFacncEncProv entidad) {

@@ -21,7 +21,7 @@ public class MsalidasDaoImpl implements IMsalidasDao{
 		return sessionFactory.getCurrentSession();
 	}
 	public Criteria crearCriteria(){ /*Se utiliza para armar criterios de busqueda segun la analogia de hibernate orientada a objetos*/
-		return getSession().createCriteria(PymeConsecutivos.class);
+		return getSession().createCriteria(PymeMsalidas.class);
 		
 	}
 	

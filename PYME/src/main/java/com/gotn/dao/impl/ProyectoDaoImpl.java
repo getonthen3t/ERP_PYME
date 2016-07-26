@@ -20,7 +20,7 @@ public class ProyectoDaoImpl implements IProyectoDao{
 		return sessionFactory.getCurrentSession();
 	}
 	public Criteria crearCriteria(){ /*Se utiliza para armar criterios de busqueda segun la analogia de hibernate orientada a objetos*/
-		return getSession().createCriteria(PymeConsecutivos.class);
+		return getSession().createCriteria(PymeProyecto.class);
 		
 	}
 	

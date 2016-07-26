@@ -4,12 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.gotn.dao.IConsecutivoDao;
 import com.gotn.dao.IFacncDetCliDao;
 import com.gotn.model.PymeFacncDetCli;
 import com.gotn.service.IFacncDetCliService;
-/*Creado por: jjara 2016-07-25*/
+
+/*Creado por: jjara 2016-07-26*/
 @Service("facncDetCliService")
 public class FacncDetCliServiceImpl implements IFacncDetCliService {
 	@Autowired
