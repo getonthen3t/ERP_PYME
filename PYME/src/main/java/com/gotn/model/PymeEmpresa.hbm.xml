@@ -3,66 +3,70 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
 <hibernate-mapping>
-    <class name="com.gotn.entity.PymeEmpresa" table="PYME_EMPRESA">
-        <id name="empId" type="long">
-            <column name="EMP_ID" precision="10" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="pymeDtipos" class="com.gotn.entity.PymeDtipos" fetch="select">
-            <column name="EMP_ESTADO" precision="10" scale="0" not-null="true">
-                <comment>REFERENCIA A LA TABLA DE TIPOS</comment>
-            </column>
-        </many-to-one>
-        <property name="empNombre" type="string">
-            <column name="EMP_NOMBRE" length="250" not-null="true" />
-        </property>
-        <property name="empNombreImpreso" type="string">
-            <column name="EMP_NOMBRE_IMPRESO" length="250" />
-        </property>
-        <property name="empIdJuridico" type="byte">
-            <column name="EMP_ID_JURIDICO" precision="2" scale="0" not-null="true" />
-        </property>
-        <property name="empNombreRepresentante" type="string">
-            <column name="EMP_NOMBRE_REPRESENTANTE" length="200" />
-        </property>
-        <property name="empDireccion" type="string">
-            <column name="EMP_DIRECCION" length="500" not-null="true" />
-        </property>
-        <property name="empTelefono1" type="string">
-            <column name="EMP_TELEFONO1" length="20" not-null="true" />
-        </property>
-        <property name="empTelefono2" type="string">
-            <column name="EMP_TELEFONO2" length="20" />
-        </property>
-        <property name="empFax" type="string">
-            <column name="EMP_FAX" length="20" />
-        </property>
-        <property name="empEmail" type="string">
-            <column name="EMP_EMAIL" length="200" />
-        </property>
-        <property name="empRutaLogo" type="string">
-            <column name="EMP_RUTA_LOGO" length="4000" />
-        </property>
-        <property name="empCreadoPor" type="string">
-            <column name="EMP_CREADO_POR" length="100" not-null="true" />
-        </property>
-        <property name="creadoEl" type="date">
-            <column name="CREADO_EL" length="7" />
-        </property>
-        <property name="empImpuestoVentas" type="big_decimal">
-            <column name="EMP_IMPUESTO_VENTAS" precision="10" not-null="true" />
-        </property>
-        <set name="pymeProyectos" table="PYME_PROYECTO" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="EMP_ID" precision="10" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="com.gotn.entity.PymeProyecto" />
-        </set>
-        <set name="pymeSysUserses" table="PYME_SYS_USERS" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="EMP_ID" precision="10" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="com.gotn.entity.PymeSysUsers" />
-        </set>
-    </class>
+	<class name="com.gotn.entity.PymeEmpresa" table="PYME_EMPRESA">
+		<id name="empId" type="long">
+			<column name="EMP_ID" precision="10" scale="0" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="pymeDtipos" class="com.gotn.entity.PymeDtipos"
+			fetch="select">
+			<column name="EMP_ESTADO" precision="10" scale="0" not-null="true">
+				<comment>REFERENCIA A LA TABLA DE TIPOS</comment>
+			</column>
+		</many-to-one>
+		<property name="empNombre" type="string">
+			<column name="EMP_NOMBRE" length="250" not-null="true" />
+		</property>
+		<property name="empNombreImpreso" type="string">
+			<column name="EMP_NOMBRE_IMPRESO" length="250" />
+		</property>
+		<property name="empIdJuridico" type="byte">
+			<column name="EMP_ID_JURIDICO" precision="2" scale="0"
+				not-null="true" />
+		</property>
+		<property name="empNombreRepresentante" type="string">
+			<column name="EMP_NOMBRE_REPRESENTANTE" length="200" />
+		</property>
+		<property name="empDireccion" type="string">
+			<column name="EMP_DIRECCION" length="500" not-null="true" />
+		</property>
+		<property name="empTelefono1" type="string">
+			<column name="EMP_TELEFONO1" length="20" not-null="true" />
+		</property>
+		<property name="empTelefono2" type="string">
+			<column name="EMP_TELEFONO2" length="20" />
+		</property>
+		<property name="empFax" type="string">
+			<column name="EMP_FAX" length="20" />
+		</property>
+		<property name="empEmail" type="string">
+			<column name="EMP_EMAIL" length="200" />
+		</property>
+		<property name="empRutaLogo" type="string">
+			<column name="EMP_RUTA_LOGO" length="4000" />
+		</property>
+		<property name="empCreadoPor" type="string">
+			<column name="EMP_CREADO_POR" length="100" not-null="true" />
+		</property>
+		<property name="creadoEl" type="date">
+			<column name="CREADO_EL" length="7" />
+		</property>
+		<property name="empImpuestoVentas" type="big_decimal">
+			<column name="EMP_IMPUESTO_VENTAS" precision="10" not-null="true" />
+		</property>
+		<set name="pymeProyectos" table="PYME_PROYECTO" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="EMP_ID" precision="10" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.gotn.entity.PymeProyecto" />
+		</set>
+		<set name="pymeSysUserses" table="PYME_SYS_USERS" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="EMP_ID" precision="10" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.gotn.entity.PymeSysUsers" />
+		</set>
+	</class>
 </hibernate-mapping>

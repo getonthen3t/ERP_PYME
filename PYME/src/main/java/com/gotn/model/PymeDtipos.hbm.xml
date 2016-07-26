@@ -3,207 +3,246 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
 <hibernate-mapping>
-    <class name="com.gotn.entity.PymeDtipos" table="PYME_DTIPOS">
-        <id name="dtipoId" type="long">
-            <column name="DTIPO_ID" precision="10" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="pymeMtipos" class="com.gotn.entity.PymeMtipos" fetch="select">
-            <column name="MTIPO_ID" precision="10" scale="0" not-null="true" />
-        </many-to-one>
-        <property name="dtipoNombre" type="string">
-            <column name="DTIPO_NOMBRE" length="50" not-null="true" />
-        </property>
-        <property name="dtipoEstado" type="boolean">
-            <column name="DTIPO_ESTADO" precision="1" scale="0" not-null="true">
-                <comment>1 = ACTIVO 0=INACTIVO 2=PENDIENTE</comment>
-            </column>
-        </property>
-        <property name="dtipoCreadoEl" type="date">
-            <column name="DTIPO_CREADO_EL" length="7" not-null="true" />
-        </property>
-        <property name="dtipoCantidad" type="big_decimal">
-            <column name="DTIPO_CANTIDAD" precision="22" scale="0" />
-        </property>
-        <set name="pymeProductosesForProducTipo" table="PYME_PRODUCTOS" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="PRODUC_TIPO" precision="10" scale="0">
-                    <comment>REFERENCIA A LA TABLA DE TIPOS</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeProductos" />
-        </set>
-        <set name="pymeMlistaPrecioses" table="PYME_MLISTA_PRECIOS" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="MLIST_ESTADO" precision="10" scale="0" />
-            </key>
-            <one-to-many class="com.gotn.entity.PymeMlistaPrecios" />
-        </set>
-        <set name="pymeNdEncClisForNdcliEstado" table="PYME_ND_ENC_CLI" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="NDCLI_ESTADO" precision="22" scale="0" not-null="true">
-                    <comment>ABIERTO/CERRADO</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeNdEncCli" />
-        </set>
-        <set name="pymeEmpresas" table="PYME_EMPRESA" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="EMP_ESTADO" precision="10" scale="0" not-null="true">
-                    <comment>REFERENCIA A LA TABLA DE TIPOS</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeEmpresa" />
-        </set>
-        <set name="pymeNdEncClisForNdcliTipoFacnd" table="PYME_ND_ENC_CLI" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="NDCLI_TIPO_FACND" precision="10" scale="0" not-null="true">
-                    <comment>ARTICULOS/SERVICIOS</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeNdEncCli" />
-        </set>
-        <set name="pymeProductosesForProducEstado" table="PYME_PRODUCTOS" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="PRODUC_ESTADO" precision="10" scale="0" not-null="true">
-                    <comment>REFERENCIA A LA TABLA DE TIPOS</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeProductos" />
-        </set>
-        <set name="pymeProductosesForProducMedida" table="PYME_PRODUCTOS" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="PRODUC_MEDIDA" precision="10" scale="0">
-                    <comment>REFERENCIA A LA TABLA DE TIPOS</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeProductos" />
-        </set>
-        <set name="pymeProyectos" table="PYME_PROYECTO" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="PROY_ESTADO" precision="10" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="com.gotn.entity.PymeProyecto" />
-        </set>
-        <set name="pymeFacncEncProvsForFacprovTipoDoc" table="PYME_FACNC_ENC_PROV" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="FACPROV_TIPO_DOC" precision="10" scale="0" not-null="true">
-                    <comment>FACTURA/NC</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeFacncEncProv" />
-        </set>
-        <set name="pymeFacncEncClisForFacTipoFacnd" table="PYME_FACNC_ENC_CLI" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="FAC_TIPO_FACND" precision="10" scale="0" not-null="true">
-                    <comment>ARTICULOS/SERVICIOS</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeFacncEncCli" />
-        </set>
-        <set name="pymeEtapas" table="PYME_ETAPA" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ETA_ESTADO" precision="10" scale="0">
-                    <comment>Proviene de la tabla de tipos</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeEtapa" />
-        </set>
-        <set name="pymeFacncEncClisForFacEstado" table="PYME_FACNC_ENC_CLI" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="FAC_ESTADO" precision="22" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="com.gotn.entity.PymeFacncEncCli" />
-        </set>
-        <set name="pymeFacncEncProvsForFacprovEstado" table="PYME_FACNC_ENC_PROV" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="FACPROV_ESTADO" precision="22" scale="0" not-null="true">
-                    <comment>ABIERTO/CERRADO</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeFacncEncProv" />
-        </set>
-        <set name="pymeFacncEncClisForFacTipoDoc" table="PYME_FACNC_ENC_CLI" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="FAC_TIPO_DOC" precision="10" scale="0" not-null="true">
-                    <comment>FACTURA/NC</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeFacncEncCli" />
-        </set>
-        <set name="pymeFacncEncProvsForFacprovTipoFacnd" table="PYME_FACNC_ENC_PROV" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="FACPROV_TIPO_FACND" precision="10" scale="0" not-null="true">
-                    <comment>ARTICULOS/SERVICOS</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeFacncEncProv" />
-        </set>
-        <set name="pymeDsalidasesForDsalTipoMov" table="PYME_DSALIDAS" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="DSAL_TIPO_MOV" precision="10" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="com.gotn.entity.PymeDsalidas" />
-        </set>
-        <set name="pymeDsalidasesForDsalEstadoDoc" table="PYME_DSALIDAS" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="DSAL_ESTADO_DOC" precision="10" scale="0">
-                    <comment>De la tabla de tipos-Estado de documento. Abierto/cerrado/aprobado</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeDsalidas" />
-        </set>
-        <set name="pymeSociosesForSocTipoSocio" table="PYME_SOCIOS" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="SOC_TIPO_SOCIO" precision="10" scale="0" not-null="true">
-                    <comment>CLIENTE / PROVEEDOR</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeSocios" />
-        </set>
-        <set name="pymeSociosesForSocTipoCredito" table="PYME_SOCIOS" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="SOC_TIPO_CREDITO" precision="10" scale="0" not-null="true">
-                    <comment>REFERENCIA A LA TABLA DE TIPOS</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeSocios" />
-        </set>
-        <set name="pymeSociosesForSocTipoPlazo" table="PYME_SOCIOS" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="SOC_TIPO_PLAZO" precision="10" scale="0">
-                    <comment>REFERENCIA A LA TABLA DE TIPOS</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeSocios" />
-        </set>
-        <set name="pymeSociosesForSocGrupoClientes" table="PYME_SOCIOS" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="SOC_GRUPO_CLIENTES" precision="10" scale="0">
-                    <comment>REFERENCIA A LA TABLA DE TIPOS</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeSocios" />
-        </set>
-        <set name="pymeNdEncProvsForNdprovTipoFacnd" table="PYME_ND_ENC_PROV" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="NDPROV_TIPO_FACND" precision="10" scale="0" not-null="true">
-                    <comment>ARTICULOS/SERVICIOS</comment>
-                </column>
-            </key>
-            <one-to-many class="com.gotn.entity.PymeNdEncProv" />
-        </set>
-        <set name="pymeNdEncProvsForNdprovEstado" table="PYME_ND_ENC_PROV" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="NDPROV_ESTADO" precision="22" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="com.gotn.entity.PymeNdEncProv" />
-        </set>
-        <set name="pymeSubetapas" table="PYME_SUBETAPA" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="SUBETA_ESTADO" precision="10" scale="0" />
-            </key>
-            <one-to-many class="com.gotn.entity.PymeSubetapa" />
-        </set>
-    </class>
+	<class name="com.gotn.entity.PymeDtipos" table="PYME_DTIPOS">
+		<id name="dtipoId" type="long">
+			<column name="DTIPO_ID" precision="10" scale="0" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="pymeMtipos" class="com.gotn.entity.PymeMtipos"
+			fetch="select">
+			<column name="MTIPO_ID" precision="10" scale="0" not-null="true" />
+		</many-to-one>
+		<property name="dtipoNombre" type="string">
+			<column name="DTIPO_NOMBRE" length="50" not-null="true" />
+		</property>
+		<property name="dtipoEstado" type="boolean">
+			<column name="DTIPO_ESTADO" precision="1" scale="0" not-null="true">
+				<comment>1 = ACTIVO 0=INACTIVO 2=PENDIENTE</comment>
+			</column>
+		</property>
+		<property name="dtipoCreadoEl" type="date">
+			<column name="DTIPO_CREADO_EL" length="7" not-null="true" />
+		</property>
+		<property name="dtipoCantidad" type="big_decimal">
+			<column name="DTIPO_CANTIDAD" precision="22" scale="0" />
+		</property>
+		<set name="pymeProductosesForProducTipo" table="PYME_PRODUCTOS"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="PRODUC_TIPO" precision="10" scale="0">
+					<comment>REFERENCIA A LA TABLA DE TIPOS</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeProductos" />
+		</set>
+		<set name="pymeMlistaPrecioses" table="PYME_MLISTA_PRECIOS"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="MLIST_ESTADO" precision="10" scale="0" />
+			</key>
+			<one-to-many class="com.gotn.entity.PymeMlistaPrecios" />
+		</set>
+		<set name="pymeNdEncClisForNdcliEstado" table="PYME_ND_ENC_CLI"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="NDCLI_ESTADO" precision="22" scale="0"
+					not-null="true">
+					<comment>ABIERTO/CERRADO</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeNdEncCli" />
+		</set>
+		<set name="pymeEmpresas" table="PYME_EMPRESA" inverse="true" lazy="true"
+			fetch="select">
+			<key>
+				<column name="EMP_ESTADO" precision="10" scale="0" not-null="true">
+					<comment>REFERENCIA A LA TABLA DE TIPOS</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeEmpresa" />
+		</set>
+		<set name="pymeNdEncClisForNdcliTipoFacnd" table="PYME_ND_ENC_CLI"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="NDCLI_TIPO_FACND" precision="10" scale="0"
+					not-null="true">
+					<comment>ARTICULOS/SERVICIOS</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeNdEncCli" />
+		</set>
+		<set name="pymeProductosesForProducEstado" table="PYME_PRODUCTOS"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="PRODUC_ESTADO" precision="10" scale="0"
+					not-null="true">
+					<comment>REFERENCIA A LA TABLA DE TIPOS</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeProductos" />
+		</set>
+		<set name="pymeProductosesForProducMedida" table="PYME_PRODUCTOS"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="PRODUC_MEDIDA" precision="10" scale="0">
+					<comment>REFERENCIA A LA TABLA DE TIPOS</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeProductos" />
+		</set>
+		<set name="pymeProyectos" table="PYME_PROYECTO" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="PROY_ESTADO" precision="10" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.gotn.entity.PymeProyecto" />
+		</set>
+		<set name="pymeFacncEncProvsForFacprovTipoDoc" table="PYME_FACNC_ENC_PROV"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="FACPROV_TIPO_DOC" precision="10" scale="0"
+					not-null="true">
+					<comment>FACTURA/NC</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeFacncEncProv" />
+		</set>
+		<set name="pymeFacncEncClisForFacTipoFacnd" table="PYME_FACNC_ENC_CLI"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="FAC_TIPO_FACND" precision="10" scale="0"
+					not-null="true">
+					<comment>ARTICULOS/SERVICIOS</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeFacncEncCli" />
+		</set>
+		<set name="pymeEtapas" table="PYME_ETAPA" inverse="true" lazy="true"
+			fetch="select">
+			<key>
+				<column name="ETA_ESTADO" precision="10" scale="0">
+					<comment>Proviene de la tabla de tipos</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeEtapa" />
+		</set>
+		<set name="pymeFacncEncClisForFacEstado" table="PYME_FACNC_ENC_CLI"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="FAC_ESTADO" precision="22" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.gotn.entity.PymeFacncEncCli" />
+		</set>
+		<set name="pymeFacncEncProvsForFacprovEstado" table="PYME_FACNC_ENC_PROV"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="FACPROV_ESTADO" precision="22" scale="0"
+					not-null="true">
+					<comment>ABIERTO/CERRADO</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeFacncEncProv" />
+		</set>
+		<set name="pymeFacncEncClisForFacTipoDoc" table="PYME_FACNC_ENC_CLI"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="FAC_TIPO_DOC" precision="10" scale="0"
+					not-null="true">
+					<comment>FACTURA/NC</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeFacncEncCli" />
+		</set>
+		<set name="pymeFacncEncProvsForFacprovTipoFacnd" table="PYME_FACNC_ENC_PROV"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="FACPROV_TIPO_FACND" precision="10" scale="0"
+					not-null="true">
+					<comment>ARTICULOS/SERVICOS</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeFacncEncProv" />
+		</set>
+		<set name="pymeDsalidasesForDsalTipoMov" table="PYME_DSALIDAS"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="DSAL_TIPO_MOV" precision="10" scale="0"
+					not-null="true" />
+			</key>
+			<one-to-many class="com.gotn.entity.PymeDsalidas" />
+		</set>
+		<set name="pymeDsalidasesForDsalEstadoDoc" table="PYME_DSALIDAS"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="DSAL_ESTADO_DOC" precision="10" scale="0">
+					<comment>De la tabla de tipos-Estado de documento.
+						Abierto/cerrado/aprobado</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeDsalidas" />
+		</set>
+		<set name="pymeSociosesForSocTipoSocio" table="PYME_SOCIOS"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="SOC_TIPO_SOCIO" precision="10" scale="0"
+					not-null="true">
+					<comment>CLIENTE / PROVEEDOR</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeSocios" />
+		</set>
+		<set name="pymeSociosesForSocTipoCredito" table="PYME_SOCIOS"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="SOC_TIPO_CREDITO" precision="10" scale="0"
+					not-null="true">
+					<comment>REFERENCIA A LA TABLA DE TIPOS</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeSocios" />
+		</set>
+		<set name="pymeSociosesForSocTipoPlazo" table="PYME_SOCIOS"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="SOC_TIPO_PLAZO" precision="10" scale="0">
+					<comment>REFERENCIA A LA TABLA DE TIPOS</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeSocios" />
+		</set>
+		<set name="pymeSociosesForSocGrupoClientes" table="PYME_SOCIOS"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="SOC_GRUPO_CLIENTES" precision="10" scale="0">
+					<comment>REFERENCIA A LA TABLA DE TIPOS</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeSocios" />
+		</set>
+		<set name="pymeNdEncProvsForNdprovTipoFacnd" table="PYME_ND_ENC_PROV"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="NDPROV_TIPO_FACND" precision="10" scale="0"
+					not-null="true">
+					<comment>ARTICULOS/SERVICIOS</comment>
+				</column>
+			</key>
+			<one-to-many class="com.gotn.entity.PymeNdEncProv" />
+		</set>
+		<set name="pymeNdEncProvsForNdprovEstado" table="PYME_ND_ENC_PROV"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="NDPROV_ESTADO" precision="22" scale="0"
+					not-null="true" />
+			</key>
+			<one-to-many class="com.gotn.entity.PymeNdEncProv" />
+		</set>
+		<set name="pymeSubetapas" table="PYME_SUBETAPA" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="SUBETA_ESTADO" precision="10" scale="0" />
+			</key>
+			<one-to-many class="com.gotn.entity.PymeSubetapa" />
+		</set>
+	</class>
 </hibernate-mapping>

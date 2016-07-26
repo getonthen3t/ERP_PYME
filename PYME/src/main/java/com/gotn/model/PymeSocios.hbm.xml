@@ -3,54 +3,60 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
 <hibernate-mapping>
-    <class name="com.gotn.entity.PymeSocios" table="PYME_SOCIOS">
-        <id name="socId" type="big_decimal">
-            <column name="SOC_ID" precision="22" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="pymeDtiposBySocTipoSocio" class="com.gotn.entity.PymeDtipos" fetch="select">
-            <column name="SOC_TIPO_SOCIO" precision="10" scale="0" not-null="true">
-                <comment>CLIENTE / PROVEEDOR</comment>
-            </column>
-        </many-to-one>
-        <many-to-one name="pymeDtiposBySocTipoPlazo" class="com.gotn.entity.PymeDtipos" fetch="select">
-            <column name="SOC_TIPO_PLAZO" precision="10" scale="0">
-                <comment>REFERENCIA A LA TABLA DE TIPOS</comment>
-            </column>
-        </many-to-one>
-        <many-to-one name="pymeDtiposBySocTipoCredito" class="com.gotn.entity.PymeDtipos" fetch="select">
-            <column name="SOC_TIPO_CREDITO" precision="10" scale="0" not-null="true">
-                <comment>REFERENCIA A LA TABLA DE TIPOS</comment>
-            </column>
-        </many-to-one>
-        <many-to-one name="pymeDtiposBySocGrupoClientes" class="com.gotn.entity.PymeDtipos" fetch="select">
-            <column name="SOC_GRUPO_CLIENTES" precision="10" scale="0">
-                <comment>REFERENCIA A LA TABLA DE TIPOS</comment>
-            </column>
-        </many-to-one>
-        <property name="socExterno" type="string">
-            <column name="SOC_EXTERNO" length="50" not-null="true" unique="true" />
-        </property>
-        <property name="socNombre" type="string">
-            <column name="SOC_NOMBRE" length="100" not-null="true" />
-        </property>
-        <property name="socApellido1" type="string">
-            <column name="SOC_APELLIDO1" length="100" not-null="true" />
-        </property>
-        <property name="socApellido2" type="string">
-            <column name="SOC_APELLIDO2" length="100" />
-        </property>
-        <property name="socDireccion1" type="string">
-            <column name="SOC_DIRECCION1" length="500" />
-        </property>
-        <property name="socDireccion2" type="string">
-            <column name="SOC_DIRECCION2" length="500" />
-        </property>
-        <property name="socCreadoPor" type="string">
-            <column name="SOC_CREADO_POR" length="20" />
-        </property>
-        <property name="socCreadoEl" type="date">
-            <column name="SOC_CREADO_EL" length="7" />
-        </property>
-    </class>
+	<class name="com.gotn.entity.PymeSocios" table="PYME_SOCIOS">
+		<id name="socId" type="big_decimal">
+			<column name="SOC_ID" precision="22" scale="0" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="pymeDtiposBySocTipoSocio" class="com.gotn.entity.PymeDtipos"
+			fetch="select">
+			<column name="SOC_TIPO_SOCIO" precision="10" scale="0"
+				not-null="true">
+				<comment>CLIENTE / PROVEEDOR</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="pymeDtiposBySocTipoPlazo" class="com.gotn.entity.PymeDtipos"
+			fetch="select">
+			<column name="SOC_TIPO_PLAZO" precision="10" scale="0">
+				<comment>REFERENCIA A LA TABLA DE TIPOS</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="pymeDtiposBySocTipoCredito" class="com.gotn.entity.PymeDtipos"
+			fetch="select">
+			<column name="SOC_TIPO_CREDITO" precision="10" scale="0"
+				not-null="true">
+				<comment>REFERENCIA A LA TABLA DE TIPOS</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="pymeDtiposBySocGrupoClientes" class="com.gotn.entity.PymeDtipos"
+			fetch="select">
+			<column name="SOC_GRUPO_CLIENTES" precision="10" scale="0">
+				<comment>REFERENCIA A LA TABLA DE TIPOS</comment>
+			</column>
+		</many-to-one>
+		<property name="socExterno" type="string">
+			<column name="SOC_EXTERNO" length="50" not-null="true" unique="true" />
+		</property>
+		<property name="socNombre" type="string">
+			<column name="SOC_NOMBRE" length="100" not-null="true" />
+		</property>
+		<property name="socApellido1" type="string">
+			<column name="SOC_APELLIDO1" length="100" not-null="true" />
+		</property>
+		<property name="socApellido2" type="string">
+			<column name="SOC_APELLIDO2" length="100" />
+		</property>
+		<property name="socDireccion1" type="string">
+			<column name="SOC_DIRECCION1" length="500" />
+		</property>
+		<property name="socDireccion2" type="string">
+			<column name="SOC_DIRECCION2" length="500" />
+		</property>
+		<property name="socCreadoPor" type="string">
+			<column name="SOC_CREADO_POR" length="20" />
+		</property>
+		<property name="socCreadoEl" type="date">
+			<column name="SOC_CREADO_EL" length="7" />
+		</property>
+	</class>
 </hibernate-mapping>

@@ -3,46 +3,47 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
 <hibernate-mapping>
-    <class name="com.gotn.entity.PymeSysUsers" table="PYME_SYS_USERS">
-        <id name="suId" type="long">
-            <column name="SU_ID" precision="10" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="pymeEmpresa" class="com.gotn.entity.PymeEmpresa" fetch="select">
-            <column name="EMP_ID" precision="10" scale="0" not-null="true" />
-        </many-to-one>
-        <property name="suIdentificacion" type="string">
-            <column name="SU_IDENTIFICACION" length="100" unique="true" />
-        </property>
-        <property name="suPassword" type="string">
-            <column name="SU_PASSWORD" length="200" not-null="true" />
-        </property>
-        <property name="suNombre" type="string">
-            <column name="SU_NOMBRE" length="200" not-null="true" />
-        </property>
-        <property name="suApellido1" type="string">
-            <column name="SU_APELLIDO1" length="200" not-null="true" />
-        </property>
-        <property name="suApellido2" type="string">
-            <column name="SU_APELLIDO2" length="200" />
-        </property>
-        <property name="suEmail" type="string">
-            <column name="SU_EMAIL" length="20" unique="true" />
-        </property>
-        <property name="suTelefono" type="string">
-            <column name="SU_TELEFONO" length="20" />
-        </property>
-        <property name="suSexo" type="string">
-            <column name="SU_SEXO" length="20" />
-        </property>
-        <property name="suCreadoEl" type="date">
-            <column name="SU_CREADO_EL" length="7" />
-        </property>
-        <property name="suCreadoPor" type="string">
-            <column name="SU_CREADO_POR" length="50" />
-        </property>
-        <property name="suCodigo" type="string">
-            <column name="SU_CODIGO" length="50" not-null="true" unique="true" />
-        </property>
-    </class>
+	<class name="com.gotn.entity.PymeSysUsers" table="PYME_SYS_USERS">
+		<id name="suId" type="long">
+			<column name="SU_ID" precision="10" scale="0" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="pymeEmpresa" class="com.gotn.entity.PymeEmpresa"
+			fetch="select">
+			<column name="EMP_ID" precision="10" scale="0" not-null="true" />
+		</many-to-one>
+		<property name="suIdentificacion" type="string">
+			<column name="SU_IDENTIFICACION" length="100" unique="true" />
+		</property>
+		<property name="suPassword" type="string">
+			<column name="SU_PASSWORD" length="200" not-null="true" />
+		</property>
+		<property name="suNombre" type="string">
+			<column name="SU_NOMBRE" length="200" not-null="true" />
+		</property>
+		<property name="suApellido1" type="string">
+			<column name="SU_APELLIDO1" length="200" not-null="true" />
+		</property>
+		<property name="suApellido2" type="string">
+			<column name="SU_APELLIDO2" length="200" />
+		</property>
+		<property name="suEmail" type="string">
+			<column name="SU_EMAIL" length="20" unique="true" />
+		</property>
+		<property name="suTelefono" type="string">
+			<column name="SU_TELEFONO" length="20" />
+		</property>
+		<property name="suSexo" type="string">
+			<column name="SU_SEXO" length="20" />
+		</property>
+		<property name="suCreadoEl" type="date">
+			<column name="SU_CREADO_EL" length="7" />
+		</property>
+		<property name="suCreadoPor" type="string">
+			<column name="SU_CREADO_POR" length="50" />
+		</property>
+		<property name="suCodigo" type="string">
+			<column name="SU_CODIGO" length="50" not-null="true" unique="true" />
+		</property>
+	</class>
 </hibernate-mapping>

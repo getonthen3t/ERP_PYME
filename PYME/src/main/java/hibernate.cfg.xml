@@ -3,42 +3,42 @@
 "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
-        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
-        <property name="hibernate.connection.password">GOTN</property>
-        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1522:XE</property>
-        <property name="hibernate.connection.username">GOTN</property>
-        <property name="hibernate.default_schema">GOTN</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
-        <property name="hibernate.search.autoregister_listeners">true</property>
-        <property name="hibernate.validator.apply_to_ddl">false</property>
-        <mapping class="com.gotn.generateentities.PymeDentradas" />
-        <mapping class="com.gotn.generateentities.PymeMsalidas" />
-        <mapping class="com.gotn.generateentities.PymeDlistaPrecios" />
-        <mapping class="com.gotn.generateentities.PymeProyecto" />
-        <mapping class="com.gotn.generateentities.PymeMtipos" />
-        <mapping class="com.gotn.generateentities.PymeDtipos" />
-        <mapping class="com.gotn.generateentities.PymeProductos" />
-        <mapping class="com.gotn.generateentities.PymeFacncDetCli" />
-        <mapping class="com.gotn.generateentities.PymeFacncEncCli" />
-        <mapping class="com.gotn.generateentities.PymeSysSeguridad" />
-        <mapping class="com.gotn.generateentities.PymeNdEncProv" />
-        <mapping class="com.gotn.generateentities.PymeEmpresa" />
-        <mapping class="com.gotn.generateentities.PymeConsecutivos" />
-        <mapping class="com.gotn.generateentities.PymeNdEncCli" />
-        <mapping class="com.gotn.generateentities.PymeFacncEncProv" />
-        <mapping class="com.gotn.generateentities.PymeMentradas" />
-        <mapping class="com.gotn.generateentities.PymeMlistaPrecios" />
-        <mapping class="com.gotn.generateentities.PymeFacncDetProv" />
-        <mapping class="com.gotn.generateentities.PymeNdDetProv" />
-        <mapping class="com.gotn.generateentities.PymeSysPermisos" />
-        <mapping class="com.gotn.generateentities.PymeSocios" />
-        <mapping class="com.gotn.generateentities.PymeSubetapa" />
-        <mapping class="com.gotn.generateentities.PymeDsalidas" />
-        <mapping class="com.gotn.generateentities.PymeNdDetCli" />
-        <mapping class="com.gotn.generateentities.PymeEtapa" />
-        <mapping class="com.gotn.generateentities.PymeSysUsers" />
-        <mapping class="com.gotn.generateentities.PymeTipoCambio" />
-    </session-factory>
+	<session-factory>
+		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+		<property name="hibernate.connection.password">GOTN</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1522:XE</property>
+		<property name="hibernate.connection.username">GOTN</property>
+		<property name="hibernate.default_schema">GOTN</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="hibernate.search.autoregister_listeners">true</property>
+		<property name="hibernate.validator.apply_to_ddl">false</property>
+		<mapping class="com.gotn.generateentities.PymeDentradas" />
+		<mapping class="com.gotn.generateentities.PymeMsalidas" />
+		<mapping class="com.gotn.generateentities.PymeDlistaPrecios" />
+		<mapping class="com.gotn.generateentities.PymeProyecto" />
+		<mapping class="com.gotn.generateentities.PymeMtipos" />
+		<mapping class="com.gotn.generateentities.PymeDtipos" />
+		<mapping class="com.gotn.generateentities.PymeProductos" />
+		<mapping class="com.gotn.generateentities.PymeFacncDetCli" />
+		<mapping class="com.gotn.generateentities.PymeFacncEncCli" />
+		<mapping class="com.gotn.generateentities.PymeSysSeguridad" />
+		<mapping class="com.gotn.generateentities.PymeNdEncProv" />
+		<mapping class="com.gotn.generateentities.PymeEmpresa" />
+		<mapping class="com.gotn.generateentities.PymeConsecutivos" />
+		<mapping class="com.gotn.generateentities.PymeNdEncCli" />
+		<mapping class="com.gotn.generateentities.PymeFacncEncProv" />
+		<mapping class="com.gotn.generateentities.PymeMentradas" />
+		<mapping class="com.gotn.generateentities.PymeMlistaPrecios" />
+		<mapping class="com.gotn.generateentities.PymeFacncDetProv" />
+		<mapping class="com.gotn.generateentities.PymeNdDetProv" />
+		<mapping class="com.gotn.generateentities.PymeSysPermisos" />
+		<mapping class="com.gotn.generateentities.PymeSocios" />
+		<mapping class="com.gotn.generateentities.PymeSubetapa" />
+		<mapping class="com.gotn.generateentities.PymeDsalidas" />
+		<mapping class="com.gotn.generateentities.PymeNdDetCli" />
+		<mapping class="com.gotn.generateentities.PymeEtapa" />
+		<mapping class="com.gotn.generateentities.PymeSysUsers" />
+		<mapping class="com.gotn.generateentities.PymeTipoCambio" />
+	</session-factory>
 </hibernate-configuration>

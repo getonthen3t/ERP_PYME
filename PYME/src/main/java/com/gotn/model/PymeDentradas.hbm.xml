@@ -3,34 +3,37 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
 <hibernate-mapping>
-    <class name="com.gotn.entity.PymeDentradas" table="PYME_DENTRADAS">
-        <id name="dentId" type="long">
-            <column name="DENT_ID" precision="10" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="pymeProductos" class="com.gotn.entity.PymeProductos" fetch="select">
-            <column name="PRODUC_ID" precision="10" scale="0" not-null="true" />
-        </many-to-one>
-        <many-to-one name="pymeMentradas" class="com.gotn.entity.PymeMentradas" fetch="select">
-            <column name="MENT_ID" precision="10" scale="0" not-null="true" />
-        </many-to-one>
-        <property name="dentCantidad" type="long">
-            <column name="DENT_CANTIDAD" precision="10" scale="0" not-null="true" />
-        </property>
-        <property name="dentPrecioUnitario" type="big_decimal">
-            <column name="DENT_PRECIO_UNITARIO" precision="18" not-null="true" />
-        </property>
-        <property name="provId" type="java.lang.Long">
-            <column name="PROV_ID" precision="10" scale="0" />
-        </property>
-        <property name="dentDetalle" type="string">
-            <column name="DENT_DETALLE" length="20" />
-        </property>
-        <property name="dentCreadoEl" type="date">
-            <column name="DENT_CREADO_EL" length="7" />
-        </property>
-        <property name="dentCreadoPor" type="string">
-            <column name="DENT_CREADO_POR" length="20" />
-        </property>
-    </class>
+	<class name="com.gotn.entity.PymeDentradas" table="PYME_DENTRADAS">
+		<id name="dentId" type="long">
+			<column name="DENT_ID" precision="10" scale="0" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="pymeProductos" class="com.gotn.entity.PymeProductos"
+			fetch="select">
+			<column name="PRODUC_ID" precision="10" scale="0" not-null="true" />
+		</many-to-one>
+		<many-to-one name="pymeMentradas" class="com.gotn.entity.PymeMentradas"
+			fetch="select">
+			<column name="MENT_ID" precision="10" scale="0" not-null="true" />
+		</many-to-one>
+		<property name="dentCantidad" type="long">
+			<column name="DENT_CANTIDAD" precision="10" scale="0"
+				not-null="true" />
+		</property>
+		<property name="dentPrecioUnitario" type="big_decimal">
+			<column name="DENT_PRECIO_UNITARIO" precision="18" not-null="true" />
+		</property>
+		<property name="provId" type="java.lang.Long">
+			<column name="PROV_ID" precision="10" scale="0" />
+		</property>
+		<property name="dentDetalle" type="string">
+			<column name="DENT_DETALLE" length="20" />
+		</property>
+		<property name="dentCreadoEl" type="date">
+			<column name="DENT_CREADO_EL" length="7" />
+		</property>
+		<property name="dentCreadoPor" type="string">
+			<column name="DENT_CREADO_POR" length="20" />
+		</property>
+	</class>
 </hibernate-mapping>

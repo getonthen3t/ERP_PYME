@@ -3,67 +3,74 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
 <hibernate-mapping>
-    <class name="com.gotn.entity.PymeFacncEncCli" table="PYME_FACNC_ENC_CLI">
-        <id name="facId" type="long">
-            <column name="FAC_ID" precision="18" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="pymeDtiposByFacEstado" class="com.gotn.entity.PymeDtipos" fetch="select">
-            <column name="FAC_ESTADO" precision="22" scale="0" not-null="true" />
-        </many-to-one>
-        <many-to-one name="pymeProyecto" class="com.gotn.entity.PymeProyecto" fetch="select">
-            <column name="PROY_ID" precision="22" scale="0" not-null="true" />
-        </many-to-one>
-        <many-to-one name="pymeDtiposByFacTipoFacnd" class="com.gotn.entity.PymeDtipos" fetch="select">
-            <column name="FAC_TIPO_FACND" precision="10" scale="0" not-null="true">
-                <comment>ARTICULOS/SERVICIOS</comment>
-            </column>
-        </many-to-one>
-        <many-to-one name="pymeDtiposByFacTipoDoc" class="com.gotn.entity.PymeDtipos" fetch="select">
-            <column name="FAC_TIPO_DOC" precision="10" scale="0" not-null="true">
-                <comment>FACTURA/NC</comment>
-            </column>
-        </many-to-one>
-        <property name="facConsectivo" type="long">
-            <column name="FAC_CONSECTIVO" precision="18" scale="0" not-null="true">
-                <comment>/MAX DE LA TABLA DE CONSECUTIVOS</comment>
-            </column>
-        </property>
-        <property name="idSoc" type="big_decimal">
-            <column name="ID_SOC" precision="22" scale="0" />
-        </property>
-        <property name="facSocNombre" type="string">
-            <column name="FAC_SOC_NOMBRE" length="200" />
-        </property>
-        <property name="facTotalLocal" type="big_decimal">
-            <column name="FAC_TOTAL_LOCAL" precision="18" scale="3" />
-        </property>
-        <property name="facTotalExtranjero" type="big_decimal">
-            <column name="FAC_TOTAL_EXTRANJERO" precision="18" scale="3" />
-        </property>
-        <property name="facTipoCambio" type="string">
-            <column name="FAC_TIPO_CAMBIO" length="20" />
-        </property>
-        <property name="facFechaDoc" type="date">
-            <column name="FAC_FECHA_DOC" length="7" />
-        </property>
-        <property name="facContabilizacion" type="date">
-            <column name="FAC_CONTABILIZACION" length="7" />
-        </property>
-        <property name="facDocBase" type="java.lang.Long">
-            <column name="FAC_DOC_BASE" precision="18" scale="0" />
-        </property>
-        <property name="facDocDestino" type="java.lang.Long">
-            <column name="FAC_DOC_DESTINO" precision="18" scale="0" />
-        </property>
-        <property name="facComentarios" type="string">
-            <column name="FAC_COMENTARIOS" length="200" />
-        </property>
-        <set name="pymeFacncDetClis" table="PYME_FACNC_DET_CLI" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="FAC_ID" precision="18" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="com.gotn.entity.PymeFacncDetCli" />
-        </set>
-    </class>
+	<class name="com.gotn.entity.PymeFacncEncCli" table="PYME_FACNC_ENC_CLI">
+		<id name="facId" type="long">
+			<column name="FAC_ID" precision="18" scale="0" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="pymeDtiposByFacEstado" class="com.gotn.entity.PymeDtipos"
+			fetch="select">
+			<column name="FAC_ESTADO" precision="22" scale="0" not-null="true" />
+		</many-to-one>
+		<many-to-one name="pymeProyecto" class="com.gotn.entity.PymeProyecto"
+			fetch="select">
+			<column name="PROY_ID" precision="22" scale="0" not-null="true" />
+		</many-to-one>
+		<many-to-one name="pymeDtiposByFacTipoFacnd" class="com.gotn.entity.PymeDtipos"
+			fetch="select">
+			<column name="FAC_TIPO_FACND" precision="10" scale="0"
+				not-null="true">
+				<comment>ARTICULOS/SERVICIOS</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="pymeDtiposByFacTipoDoc" class="com.gotn.entity.PymeDtipos"
+			fetch="select">
+			<column name="FAC_TIPO_DOC" precision="10" scale="0" not-null="true">
+				<comment>FACTURA/NC</comment>
+			</column>
+		</many-to-one>
+		<property name="facConsectivo" type="long">
+			<column name="FAC_CONSECTIVO" precision="18" scale="0"
+				not-null="true">
+				<comment>/MAX DE LA TABLA DE CONSECUTIVOS</comment>
+			</column>
+		</property>
+		<property name="idSoc" type="big_decimal">
+			<column name="ID_SOC" precision="22" scale="0" />
+		</property>
+		<property name="facSocNombre" type="string">
+			<column name="FAC_SOC_NOMBRE" length="200" />
+		</property>
+		<property name="facTotalLocal" type="big_decimal">
+			<column name="FAC_TOTAL_LOCAL" precision="18" scale="3" />
+		</property>
+		<property name="facTotalExtranjero" type="big_decimal">
+			<column name="FAC_TOTAL_EXTRANJERO" precision="18" scale="3" />
+		</property>
+		<property name="facTipoCambio" type="string">
+			<column name="FAC_TIPO_CAMBIO" length="20" />
+		</property>
+		<property name="facFechaDoc" type="date">
+			<column name="FAC_FECHA_DOC" length="7" />
+		</property>
+		<property name="facContabilizacion" type="date">
+			<column name="FAC_CONTABILIZACION" length="7" />
+		</property>
+		<property name="facDocBase" type="java.lang.Long">
+			<column name="FAC_DOC_BASE" precision="18" scale="0" />
+		</property>
+		<property name="facDocDestino" type="java.lang.Long">
+			<column name="FAC_DOC_DESTINO" precision="18" scale="0" />
+		</property>
+		<property name="facComentarios" type="string">
+			<column name="FAC_COMENTARIOS" length="200" />
+		</property>
+		<set name="pymeFacncDetClis" table="PYME_FACNC_DET_CLI" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="FAC_ID" precision="18" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.gotn.entity.PymeFacncDetCli" />
+		</set>
+	</class>
 </hibernate-mapping>

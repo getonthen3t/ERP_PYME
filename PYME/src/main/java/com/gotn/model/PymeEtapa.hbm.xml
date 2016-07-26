@@ -3,36 +3,39 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
 <hibernate-mapping>
-    <class name="com.gotn.entity.PymeEtapa" table="PYME_ETAPA">
-        <id name="etaId" type="long">
-            <column name="ETA_ID" precision="10" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="pymeProyecto" class="com.gotn.entity.PymeProyecto" fetch="select">
-            <column name="PROY_ID" precision="10" scale="0" not-null="true" />
-        </many-to-one>
-        <many-to-one name="pymeDtipos" class="com.gotn.entity.PymeDtipos" fetch="select">
-            <column name="ETA_ESTADO" precision="10" scale="0">
-                <comment>Proviene de la tabla de tipos</comment>
-            </column>
-        </many-to-one>
-        <property name="etaNombre" type="string">
-            <column name="ETA_NOMBRE" length="100" not-null="true" />
-        </property>
-        <property name="etaDescripcion" type="string">
-            <column name="ETA_DESCRIPCION" length="500" />
-        </property>
-        <property name="creadoEl" type="date">
-            <column name="CREADO_EL" length="7" />
-        </property>
-        <property name="creadoPor" type="string">
-            <column name="CREADO_POR" length="200" />
-        </property>
-        <set name="pymeSubetapas" table="PYME_SUBETAPA" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ETA_ID" precision="10" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="com.gotn.entity.PymeSubetapa" />
-        </set>
-    </class>
+	<class name="com.gotn.entity.PymeEtapa" table="PYME_ETAPA">
+		<id name="etaId" type="long">
+			<column name="ETA_ID" precision="10" scale="0" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="pymeProyecto" class="com.gotn.entity.PymeProyecto"
+			fetch="select">
+			<column name="PROY_ID" precision="10" scale="0" not-null="true" />
+		</many-to-one>
+		<many-to-one name="pymeDtipos" class="com.gotn.entity.PymeDtipos"
+			fetch="select">
+			<column name="ETA_ESTADO" precision="10" scale="0">
+				<comment>Proviene de la tabla de tipos</comment>
+			</column>
+		</many-to-one>
+		<property name="etaNombre" type="string">
+			<column name="ETA_NOMBRE" length="100" not-null="true" />
+		</property>
+		<property name="etaDescripcion" type="string">
+			<column name="ETA_DESCRIPCION" length="500" />
+		</property>
+		<property name="creadoEl" type="date">
+			<column name="CREADO_EL" length="7" />
+		</property>
+		<property name="creadoPor" type="string">
+			<column name="CREADO_POR" length="200" />
+		</property>
+		<set name="pymeSubetapas" table="PYME_SUBETAPA" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="ETA_ID" precision="10" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.gotn.entity.PymeSubetapa" />
+		</set>
+	</class>
 </hibernate-mapping>

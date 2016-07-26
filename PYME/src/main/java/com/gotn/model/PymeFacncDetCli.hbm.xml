@@ -3,34 +3,36 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
 <hibernate-mapping>
-    <class name="com.gotn.entity.PymeFacncDetCli" table="PYME_FACNC_DET_CLI">
-        <id name="facdId" type="long">
-            <column name="FACD_ID" precision="10" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="pymeProductos" class="com.gotn.entity.PymeProductos" fetch="select">
-            <column name="PRODUC_ID" precision="18" scale="0" />
-        </many-to-one>
-        <many-to-one name="pymeFacncEncCli" class="com.gotn.entity.PymeFacncEncCli" fetch="select">
-            <column name="FAC_ID" precision="18" scale="0" not-null="true" />
-        </many-to-one>
-        <property name="facdCantidad" type="java.lang.Long">
-            <column name="FACD_CANTIDAD" precision="10" scale="0" />
-        </property>
-        <property name="facdDetalle" type="string">
-            <column name="FACD_DETALLE" length="100" />
-        </property>
-        <property name="facdTotalLineaLocal" type="big_decimal">
-            <column name="FACD_TOTAL_LINEA_LOCAL" precision="18" scale="3" />
-        </property>
-        <property name="facdTotalLineaExtranjero" type="string">
-            <column name="FACD_TOTAL_LINEA_EXTRANJERO" length="20" />
-        </property>
-        <property name="facdCreadoPor" type="string">
-            <column name="FACD_CREADO_POR" length="50" />
-        </property>
-        <property name="facdCreadoEl" type="date">
-            <column name="FACD_CREADO_EL" length="7" />
-        </property>
-    </class>
+	<class name="com.gotn.entity.PymeFacncDetCli" table="PYME_FACNC_DET_CLI">
+		<id name="facdId" type="long">
+			<column name="FACD_ID" precision="10" scale="0" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="pymeProductos" class="com.gotn.entity.PymeProductos"
+			fetch="select">
+			<column name="PRODUC_ID" precision="18" scale="0" />
+		</many-to-one>
+		<many-to-one name="pymeFacncEncCli" class="com.gotn.entity.PymeFacncEncCli"
+			fetch="select">
+			<column name="FAC_ID" precision="18" scale="0" not-null="true" />
+		</many-to-one>
+		<property name="facdCantidad" type="java.lang.Long">
+			<column name="FACD_CANTIDAD" precision="10" scale="0" />
+		</property>
+		<property name="facdDetalle" type="string">
+			<column name="FACD_DETALLE" length="100" />
+		</property>
+		<property name="facdTotalLineaLocal" type="big_decimal">
+			<column name="FACD_TOTAL_LINEA_LOCAL" precision="18" scale="3" />
+		</property>
+		<property name="facdTotalLineaExtranjero" type="string">
+			<column name="FACD_TOTAL_LINEA_EXTRANJERO" length="20" />
+		</property>
+		<property name="facdCreadoPor" type="string">
+			<column name="FACD_CREADO_POR" length="50" />
+		</property>
+		<property name="facdCreadoEl" type="date">
+			<column name="FACD_CREADO_EL" length="7" />
+		</property>
+	</class>
 </hibernate-mapping>

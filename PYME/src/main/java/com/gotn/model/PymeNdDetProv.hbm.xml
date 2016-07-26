@@ -3,34 +3,36 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
 <hibernate-mapping>
-    <class name="com.gotn.entity.PymeNdDetProv" table="PYME_ND_DET_PROV">
-        <id name="ndprovdId" type="long">
-            <column name="NDPROVD_ID" precision="10" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="pymeNdEncProv" class="com.gotn.entity.PymeNdEncProv" fetch="select">
-            <column name="NDPROV_ID" precision="18" scale="0" not-null="true" />
-        </many-to-one>
-        <many-to-one name="pymeProductos" class="com.gotn.entity.PymeProductos" fetch="select">
-            <column name="PRODUC_ID" precision="18" scale="0" />
-        </many-to-one>
-        <property name="ndprovdCantidad" type="java.lang.Long">
-            <column name="NDPROVD_CANTIDAD" precision="10" scale="0" />
-        </property>
-        <property name="ndprovdDetalle" type="string">
-            <column name="NDPROVD_DETALLE" length="100" />
-        </property>
-        <property name="ndprovdTotalLineaLocal" type="big_decimal">
-            <column name="NDPROVD_TOTAL_LINEA_LOCAL" precision="18" scale="3" />
-        </property>
-        <property name="ndprovdTotalLineaExt" type="string">
-            <column name="NDPROVD_TOTAL_LINEA_EXT" length="20" />
-        </property>
-        <property name="ndprovdCreadoPor" type="string">
-            <column name="NDPROVD_CREADO_POR" length="50" />
-        </property>
-        <property name="ndprovdCreadoEl" type="date">
-            <column name="NDPROVD_CREADO_EL" length="7" />
-        </property>
-    </class>
+	<class name="com.gotn.entity.PymeNdDetProv" table="PYME_ND_DET_PROV">
+		<id name="ndprovdId" type="long">
+			<column name="NDPROVD_ID" precision="10" scale="0" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="pymeNdEncProv" class="com.gotn.entity.PymeNdEncProv"
+			fetch="select">
+			<column name="NDPROV_ID" precision="18" scale="0" not-null="true" />
+		</many-to-one>
+		<many-to-one name="pymeProductos" class="com.gotn.entity.PymeProductos"
+			fetch="select">
+			<column name="PRODUC_ID" precision="18" scale="0" />
+		</many-to-one>
+		<property name="ndprovdCantidad" type="java.lang.Long">
+			<column name="NDPROVD_CANTIDAD" precision="10" scale="0" />
+		</property>
+		<property name="ndprovdDetalle" type="string">
+			<column name="NDPROVD_DETALLE" length="100" />
+		</property>
+		<property name="ndprovdTotalLineaLocal" type="big_decimal">
+			<column name="NDPROVD_TOTAL_LINEA_LOCAL" precision="18" scale="3" />
+		</property>
+		<property name="ndprovdTotalLineaExt" type="string">
+			<column name="NDPROVD_TOTAL_LINEA_EXT" length="20" />
+		</property>
+		<property name="ndprovdCreadoPor" type="string">
+			<column name="NDPROVD_CREADO_POR" length="50" />
+		</property>
+		<property name="ndprovdCreadoEl" type="date">
+			<column name="NDPROVD_CREADO_EL" length="7" />
+		</property>
+	</class>
 </hibernate-mapping>

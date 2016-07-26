@@ -3,23 +3,23 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
 <hibernate-mapping>
-    <class name="com.gotn.entity.PymeSysPermisos" table="PYME_SYS_PERMISOS">
-        <id name="sysPerId" type="long">
-            <column name="SYS_PER_ID" precision="10" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <property name="sysPerCod" type="string">
-            <column name="SYS_PER_COD" length="50" not-null="true" />
-        </property>
-        <property name="sysPerDesc" type="string">
-            <column name="SYS_PER_DESC" length="200" not-null="true" />
-        </property>
-        <property name="sysPerCreadoPor" type="string">
-            <column name="SYS_PER_CREADO_POR" length="50" />
-        </property>
-        <property name="sysPerCreadoEl" type="date">
-            <column name="SYS_PER_CREADO_EL" length="7" />
-        </property>
-        <one-to-one name="pymeSysSeguridad" class="com.gotn.entity.PymeSysSeguridad"></one-to-one>
-    </class>
+	<class name="com.gotn.entity.PymeSysPermisos" table="PYME_SYS_PERMISOS">
+		<id name="sysPerId" type="long">
+			<column name="SYS_PER_ID" precision="10" scale="0" />
+			<generator class="assigned" />
+		</id>
+		<property name="sysPerCod" type="string">
+			<column name="SYS_PER_COD" length="50" not-null="true" />
+		</property>
+		<property name="sysPerDesc" type="string">
+			<column name="SYS_PER_DESC" length="200" not-null="true" />
+		</property>
+		<property name="sysPerCreadoPor" type="string">
+			<column name="SYS_PER_CREADO_POR" length="50" />
+		</property>
+		<property name="sysPerCreadoEl" type="date">
+			<column name="SYS_PER_CREADO_EL" length="7" />
+		</property>
+		<one-to-one name="pymeSysSeguridad" class="com.gotn.entity.PymeSysSeguridad"></one-to-one>
+	</class>
 </hibernate-mapping>

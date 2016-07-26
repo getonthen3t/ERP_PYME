@@ -3,28 +3,30 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final -->
 <hibernate-mapping>
-    <class name="com.gotn.entity.PymeSysSeguridad" table="PYME_SYS_SEGURIDAD">
-        <id name="sysSegId" type="long">
-            <column name="SYS_SEG_ID" precision="18" scale="0" />
-            <generator class="foreign">
-                <param name="property">pymeSysPermisos</param>
-            </generator>
-        </id>
-        <many-to-one name="pymeProyecto" class="com.gotn.entity.PymeProyecto" fetch="select">
-            <column name="PROY_ID" precision="10" scale="0" not-null="true" />
-        </many-to-one>
-        <one-to-one name="pymeSysPermisos" class="com.gotn.entity.PymeSysPermisos" constrained="true"></one-to-one>
-        <property name="suCodigo" type="string">
-            <column name="SU_CODIGO" length="50" not-null="true" />
-        </property>
-        <property name="sysPermCod" type="string">
-            <column name="SYS_PERM_COD" length="20" not-null="true" />
-        </property>
-        <property name="sysSegCreadoEl" type="date">
-            <column name="SYS_SEG_CREADO_EL" length="7" />
-        </property>
-        <property name="sysSegCreadoPor" type="string">
-            <column name="SYS_SEG_CREADO_POR" length="50" />
-        </property>
-    </class>
+	<class name="com.gotn.entity.PymeSysSeguridad" table="PYME_SYS_SEGURIDAD">
+		<id name="sysSegId" type="long">
+			<column name="SYS_SEG_ID" precision="18" scale="0" />
+			<generator class="foreign">
+				<param name="property">pymeSysPermisos</param>
+			</generator>
+		</id>
+		<many-to-one name="pymeProyecto" class="com.gotn.entity.PymeProyecto"
+			fetch="select">
+			<column name="PROY_ID" precision="10" scale="0" not-null="true" />
+		</many-to-one>
+		<one-to-one name="pymeSysPermisos" class="com.gotn.entity.PymeSysPermisos"
+			constrained="true"></one-to-one>
+		<property name="suCodigo" type="string">
+			<column name="SU_CODIGO" length="50" not-null="true" />
+		</property>
+		<property name="sysPermCod" type="string">
+			<column name="SYS_PERM_COD" length="20" not-null="true" />
+		</property>
+		<property name="sysSegCreadoEl" type="date">
+			<column name="SYS_SEG_CREADO_EL" length="7" />
+		</property>
+		<property name="sysSegCreadoPor" type="string">
+			<column name="SYS_SEG_CREADO_POR" length="50" />
+		</property>
+	</class>
 </hibernate-mapping>
