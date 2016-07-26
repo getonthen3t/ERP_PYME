@@ -9,9 +9,9 @@ import com.gotn.model.PymeProyecto;
 //Elaborado por Juan Jara 25-07-2016 16:59
 
 public interface IProyectoDao {
-	void guardarConsecutivo(PymeProyecto entidad );
-	void actualizarConsecutivo(PymeProyecto entidad);
-	void eliminarConsecutivo(PymeProyecto entidad);
-	PymeProyecto getConsecutivo(Integer id);
-	List<PymeProyecto> getConsecutivos();
+	void guardarProyecto(PymeProyecto entidad );
+	void actualizarProyecto(PymeProyecto entidad);
+	void eliminarProyecto(PymeProyecto entidad);
+	PymeProyecto getProyecto(Integer id);
+	List<PymeProyecto> getProyectos();
 }
