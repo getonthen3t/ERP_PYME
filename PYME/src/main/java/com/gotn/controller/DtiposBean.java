@@ -5,32 +5,33 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.gotn.model.PymeConsecutivos;
-import com.gotn.service.IConsecutivoService;
-/*Creado por asanchez 2016-07-25*/
+import com.gotn.model.PymeDtipos;
+
+import com.gotn.service.IDtiposService;
+
+
+/*Creado por jjara 2016-07-26*/
 @Component
-public class ConsecutivoBean implements Serializable {
-/*	Spring maneja cuatro tipos de scope: singleton - prototype - session- request
- * 
- * */
+public class DtiposBean implements Serializable {
+
 	/**
-	 * serialVersionUID <- Hace mas facil utilizar las clase serializables
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Autowired
-	private IConsecutivoService consecutivoService;
+	private IDtiposService dtiposService;
 	
-	private List<PymeConsecutivos> consecutivos;
-	private PymeConsecutivos consecutivo;
+	private List<PymeDtipos> dtipos;
+	private PymeDtipos dtipo;
 	private int accion;
 	private String etiquetaBoton;
 	private boolean habilitado;
 	
 	public void consultaListado(){
-		consecutivos = consecutivoService.getConsecutivos();
+		dtipos = dtiposService.getDtipos();
 	}
-	
+
 	/* 1-guardar
 	 * 2-actualizar
 	 * 3-eliminar
@@ -38,34 +39,35 @@ public class ConsecutivoBean implements Serializable {
 	 * */
 	/* Metodos de acciones CRUD*/
 	public void agregar(){
-		consecutivo = new PymeConsecutivos();
+		dtipo = new PymeDtipos();
 		etiquetaBoton = "Guardar";
 		accion = 1;
 		habilitado = true;//es para saber si habilitamos los campos de captura del formulario.
 	}
-	public void actualizar(PymeConsecutivos pojo){
-		consecutivo = pojo;
+	public void actualizar(PymeDtipos pojo){
+		dtipo = pojo;
 		etiquetaBoton = "Actualizar";
 		accion = 2;
 		habilitado = true;
 	}
-	public void eliminar(PymeConsecutivos pojo){
-		consecutivo = pojo;
+	public void eliminar(PymeDtipos pojo){
+		dtipo = pojo;
 		etiquetaBoton = "Eliminar";
 		accion = 3;
 		habilitado = true;
 	}
-	public void consultar(PymeConsecutivos pojo){
-		consecutivo = pojo;
+	public void consultar(PymeDtipos pojo){
+		dtipo = pojo;
 		etiquetaBoton = "Cerrar";
 		accion = 4;
 		habilitado = false;
 	}
-	public void guardarConsecutivo(){
+	
+	public void guardarDtipos(){
 		boolean result = false;
 		switch (accion) {
 		case 1:
-			result = consecutivoService.guardarConsecutivo(consecutivo);
+			result = dtiposService.guardarDtipos(dtipo);
 			if (result) {
 				System.out.println("Registro Exitoso");
 			} else {
@@ -73,7 +75,7 @@ public class ConsecutivoBean implements Serializable {
 			}
 			break;
 		case 2:
-			result = consecutivoService.actualizarConsecutivo(consecutivo);
+			result = dtiposService.actualizarDtipos(dtipo);
 			if (result) {
 				System.out.println("Registro Exitoso");
 			} else {
@@ -81,7 +83,7 @@ public class ConsecutivoBean implements Serializable {
 			}
 			break;
 		case 3:
-			result = consecutivoService.eliminarConsecutivo(consecutivo);
+			result = dtiposService.eliminarDtipos(dtipo);
 			if (result) {
 				System.out.println("Registro Exitoso");
 			} else {
@@ -94,30 +96,50 @@ public class ConsecutivoBean implements Serializable {
 		}
 	}
 	
-	public List<PymeConsecutivos> getConsecutivos() {
-		return consecutivos;
+	
+	
+	
+	
+	public List<PymeDtipos> getDtipos() {
+		return dtipos;
 	}
-	public void setConsecutivos(List<PymeConsecutivos> consecutivos) {
-		this.consecutivos = consecutivos;
+
+	public void setDtipos(List<PymeDtipos> dtipos) {
+		this.dtipos = dtipos;
 	}
-	public PymeConsecutivos getConsecutivo() {
-		return consecutivo;
+
+	public PymeDtipos getDtipo() {
+		return dtipo;
 	}
-	public void setConsecutivo(PymeConsecutivos consecutivo) {
-		this.consecutivo = consecutivo;
+
+	public void setDtipo(PymeDtipos dtipo) {
+		this.dtipo = dtipo;
 	}
+
+	public int getAccion() {
+		return accion;
+	}
+
+	public void setAccion(int accion) {
+		this.accion = accion;
+	}
+
 	public String getEtiquetaBoton() {
 		return etiquetaBoton;
 	}
+
 	public void setEtiquetaBoton(String etiquetaBoton) {
 		this.etiquetaBoton = etiquetaBoton;
 	}
+
 	public boolean isHabilitado() {
 		return habilitado;
 	}
+
 	public void setHabilitado(boolean habilitado) {
 		this.habilitado = habilitado;
 	}
 	
 	
+
 }
