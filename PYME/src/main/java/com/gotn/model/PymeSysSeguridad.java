@@ -1,4 +1,4 @@
-package com.gotn.model;
+ package com.gotn.model;
 // Generated Jul 24, 2016 4:29:10 PM by Hibernate Tools 4.0.1.Final
 
 import java.util.Date;
