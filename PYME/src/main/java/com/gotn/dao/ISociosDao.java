@@ -8,9 +8,9 @@ import com.gotn.model.PymeSocios;
 //Elaborado por Juan Jara 25-07-2016 16:59
 
 public interface ISociosDao {
-	void guardarConsecutivo(PymeSocios entidad );
-	void actualizarConsecutivo(PymeSocios entidad);
-	void eliminarConsecutivo(PymeSocios entidad);
-	PymeSocios getConsecutivo(Integer id);
-	List<PymeSocios> getConsecutivos();
+	void guardarSocio(PymeSocios entidad );
+	void actualizarSocio(PymeSocios entidad);
+	void eliminarSocio(PymeSocios entidad);
+	PymeSocios getSocio(Integer id);
+	List<PymeSocios> getSocios();
 }

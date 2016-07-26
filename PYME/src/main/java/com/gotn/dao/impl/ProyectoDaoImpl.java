@@ -1,5 +1,5 @@
 package com.gotn.dao.impl;
 
-public class SociosDao {
+public class ProyectoDaoImpl {
 
 }
