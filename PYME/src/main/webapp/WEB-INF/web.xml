@@ -19,6 +19,6 @@
   <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <welcome-file-list>
-  	<welcome-file> views/tipoCambio/main.xhtml</welcome-file>
+  	<welcome-file> /views/consecutivo/consecutivo.xhtml</welcome-file>
   </welcome-file-list>
 </web-app>
