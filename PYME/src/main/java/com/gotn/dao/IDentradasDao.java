@@ -7,9 +7,9 @@ import com.gotn.model.PymeDentradas;
 
 public interface IDentradasDao {
 
-	void guardarConsecutivo(PymeDentradas entidad );
-	void actualizarConsecutivo(PymeDentradas entidad);
-	void eliminarConsecutivo(PymeDentradas entidad);
-	PymeDentradas getConsecutivo(Integer id);
-	List<PymeDentradas> getConsecutivos();
+	void guardarDentradas(PymeDentradas entidad );
+	void actualizarDentradas(PymeDentradas entidad);
+	void eliminarDentradas(PymeDentradas entidad);
+	PymeDentradas getDentrada(Integer id);
+	List<PymeDentradas> getDentradas();
 }

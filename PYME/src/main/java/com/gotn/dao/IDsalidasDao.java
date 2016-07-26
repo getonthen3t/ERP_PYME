@@ -6,9 +6,9 @@ import com.gotn.model.PymeDsalidas;
 
 
 public interface IDsalidasDao {
-	void guardarConsecutivo(PymeDsalidas entidad );
-	void actualizarConsecutivo(PymeDsalidas entidad);
-	void eliminarConsecutivo(PymeDsalidas entidad);
-	PymeDsalidas getConsecutivo(Integer id);
-	List<PymeDsalidas> getConsecutivos();
+	void guardarDsalidas(PymeDsalidas entidad );
+	void actualizarDsalidas(PymeDsalidas entidad);
+	void eliminarDsalidas(PymeDsalidas entidad);
+	PymeDsalidas getDsalida(Integer id);
+	List<PymeDsalidas> getDsalidas();
 }

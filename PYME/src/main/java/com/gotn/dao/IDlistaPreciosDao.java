@@ -8,9 +8,9 @@ import com.gotn.model.PymeDlistaPrecios;
 
 
 public interface IDlistaPreciosDao {
-	void guardarConsecutivo(PymeDlistaPrecios entidad );
-	void actualizarConsecutivo(PymeDlistaPrecios entidad);
-	void eliminarConsecutivo(PymeDlistaPrecios entidad);
-	PymeDlistaPrecios getConsecutivo(Integer id);
-	List<PymeDlistaPrecios> getConsecutivos();
+	void guardarDlistaPrecios(PymeDlistaPrecios entidad );
+	void actualizarDlistaPrecios(PymeDlistaPrecios entidad);
+	void eliminarDlistaPrecios(PymeDlistaPrecios entidad);
+	PymeDlistaPrecios getDlistaPrecio(Integer id);
+	List<PymeDlistaPrecios> getDlistaPrecios();
 }
