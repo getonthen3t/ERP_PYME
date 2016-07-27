@@ -7,12 +7,14 @@ import org.springframework.stereotype.Service;
 
 import com.gotn.dao.IConsecutivoDao;
 import com.gotn.model.PymeSysPermisos;
-import com.gotn.service.ISysPermisos;
+import com.gotn.service.ISysPermisosService;
 /*Creado por: asanchez 2016-07-25*/
+
 @Service("sysPermisosService")
-public class SysPermisosServiceImpl implements ISysPermisos {
+public class SysPermisosServiceImpl implements ISysPermisosService {
+
 	@Autowired
-	private ISysPermisos sysPermisosDao;
+	private ISysPermisosService sysPermisosDao;
 	
 	public boolean guardarSysPermiso(PymeSysPermisos pojo) {
 		try {

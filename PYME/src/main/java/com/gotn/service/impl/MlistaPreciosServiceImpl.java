@@ -14,7 +14,7 @@ import com.gotn.service.IMlistaPreciosService;
 public class MlistaPreciosServiceImpl implements IMlistaPreciosService {
 	@Autowired
 	private IMlistaPreciosDao mlistaPreciosDao;
-	public boolean guardarMentradas(PymeMlistaPrecios pojo) {
+	public boolean guardarMlistaPrecios(PymeMlistaPrecios pojo) {
 		try {
 			mlistaPreciosDao.guardarMlistaPrecios(pojo);
 			return true;
@@ -24,7 +24,7 @@ public class MlistaPreciosServiceImpl implements IMlistaPreciosService {
 		}
 	}
 
-	public boolean actualizarMentradas(PymeMlistaPrecios pojo) {
+	public boolean actualizarMlistaPrecios(PymeMlistaPrecios pojo) {
 		try {
 			mlistaPreciosDao.actualizarMlistaPrecios(pojo);
 			return true;
@@ -34,7 +34,7 @@ public class MlistaPreciosServiceImpl implements IMlistaPreciosService {
 		}
 	}
 
-	public boolean eliminarMentradas(PymeMlistaPrecios pojo) {
+	public boolean eliminarMlistaPrecios(PymeMlistaPrecios pojo) {
 		try {
 			mlistaPreciosDao.eliminarMlistaPrecios(pojo);
 			return true;
@@ -44,7 +44,7 @@ public class MlistaPreciosServiceImpl implements IMlistaPreciosService {
 		}
 	}
 
-	public PymeMlistaPrecios getMentrada(int idMlistaPrecios) {
+	public PymeMlistaPrecios getMlistaPrecio(int idMlistaPrecios) {
 		try {
 			return mlistaPreciosDao.getMlistaPrecio(idMlistaPrecios);
 		} catch (Exception e) {
@@ -53,7 +53,7 @@ public class MlistaPreciosServiceImpl implements IMlistaPreciosService {
 		}
 	}
 
-	public List<PymeMlistaPrecios> getMentradas() {
+	public List<PymeMlistaPrecios> getMlistaPrecios() {
 		try {
 			return mlistaPreciosDao.getMlistaPrecios();
 		} catch (Exception e) {
