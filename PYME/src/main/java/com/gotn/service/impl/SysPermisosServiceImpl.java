@@ -9,7 +9,7 @@ import com.gotn.dao.IConsecutivoDao;
 import com.gotn.model.PymeSysPermisos;
 import com.gotn.service.ISysPermisos;
 /*Creado por: asanchez 2016-07-25*/
-@Service("consecutivoService")
+@Service("sysPermisosService")
 public class SysPermisosServiceImpl implements ISysPermisos {
 	@Autowired
 	private ISysPermisos sysPermisosDao;
