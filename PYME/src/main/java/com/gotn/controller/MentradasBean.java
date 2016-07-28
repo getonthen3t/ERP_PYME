@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.gotn.model.PymeMentradas;
 import com.gotn.service.IMentradasService;
@@ -12,6 +13,7 @@ import com.gotn.service.IMentradasService;
 
 /*Creado por jjara 2016-07-26*/
 @Component
+@Scope("session")
 public class MentradasBean implements Serializable {
 
 	/**

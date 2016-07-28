@@ -12,7 +12,8 @@ import com.gotn.dao.INdEncCliDao;
 import com.gotn.model.PymeConsecutivos;
 import com.gotn.model.PymeNdEncCli;
 /*Creado por ASANCHEZ EL 2016-07-25*/
-@Repository("ndEncCliDao") /*La variable inyectada en el service se debe llamar igual*/
+//@Repository("ndEncCliDao") /*La variable inyectada en el service se debe llamar igual*/
+@Repository
 public class NdEncCliDaoImpl implements INdEncCliDao{
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/

@@ -8,7 +8,42 @@
 
 	<ui:define name="content">
 						Pagina uno
-				
+	<h:form>
+
+            <tr>
+                <td><label>Password Actual: </label></td>
+                <td><h:inputText value="#{loginBean.confPass}"  
+                                 size="25" maxlength="20" style="background-color:yellow"/></td>
+                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+                <td><label>Password: </label></td>
+                <td><h:inputSecret  validator="#{usuarioBean.validaPass}" value="#{loginBean.nuevoPass}"
+                                    size="20" maxlength="15"  style="background-color:white" required="true"
+                                    title="Debe tener al menos ocho (8) caracteres de longitud puede contener n&uacute;meros (0-9) y letras
+                                    may&uacute;sculas ymin&uacute;sculas (A-Z, a-z), pero no puede incluir ning&uacute;n
+                                    espacio. Aseg&uacute;rese de que sea dif&iacute;cil que otros la adivinen.">
+                        <f:validateLength minimum="8" maximum="15"/>    
+                    </h:inputSecret>
+                </td>
+                <td><label>Confirmar password: </label></td>
+                <td><h:inputSecret  
+                                    size="20" maxlength="15"  style="background-color:white" required="true"
+                                    title="Debe tener al menos ocho (8) caracteres de longitud puede contener n&uacute;meros (0-9) y letras
+                                    may&uacute;sculas ymin&uacute;sculas (A-Z, a-z), pero no puede incluir ning&uacute;n
+                                    espacio. Aseg&uacute;rese de que sea dif&iacute;cil que otros la adivinen.">
+                        <f:validateLength minimum="8" maximum="15"/>    
+                    </h:inputSecret>
+                </td>
+                <h:commandButton id="button" value="Cambiar" action="#{TipoCambioBean.guardarTipoCambio()}" />
+            </tr><br></br><br></br>
+
+
+
+            <h:messages />
+
+
+            <br></br><br></br>
+            <h:link value="Regresar" outcome="tienda"/>
+        </h:form>			
 				</ui:define>
 
 

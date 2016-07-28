@@ -14,7 +14,7 @@ import com.gotn.model.PymeMtipos;
 /*Creado por ASANCHEZ EL 2016-07-25*/
 //@Repository("mtiposDao") /*La variable inyectada en el service se debe llamar igual*/
 @Repository
-@SuppressWarnings({ "unchecked", "rawtypes" })
+//@SuppressWarnings({ "unchecked", "rawtypes" })
 public class MtiposDaoImpl implements IMtiposDao{
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/

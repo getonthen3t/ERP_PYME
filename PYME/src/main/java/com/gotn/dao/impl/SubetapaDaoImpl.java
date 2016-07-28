@@ -11,7 +11,8 @@ import org.springframework.stereotype.Repository;
 import com.gotn.dao.ISubetapaDao;
 import com.gotn.model.PymeConsecutivos;
 import com.gotn.model.PymeSubetapa;
-@Repository("subetapaDao") /*La variable inyectada en el service se debe llamar igual*/
+//@Repository("subetapaDao") /*La variable inyectada en el service se debe llamar igual*/
+@Repository
 public class SubetapaDaoImpl implements ISubetapaDao{
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/

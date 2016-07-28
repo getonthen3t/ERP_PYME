@@ -12,7 +12,8 @@ import com.gotn.dao.ISysUsersDao;
 import com.gotn.model.PymeConsecutivos;
 import com.gotn.model.PymeSysUsers;
 /*Creado por ASANCHEZ EL 2016-07-25*/
-@Repository("sysUsersDao") /*La variable inyectada en el service se debe llamar igual*/
+//@Repository("sysUsersDao") /*La variable inyectada en el service se debe llamar igual*/
+@Repository
 public class SysUsersDaoImpl implements ISysUsersDao   {
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/

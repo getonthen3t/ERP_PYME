@@ -12,7 +12,8 @@ import com.gotn.dao.INdDetCliDao;
 import com.gotn.model.PymeConsecutivos;
 import com.gotn.model.PymeNdDetCli;
 /*Creado por ASANCHEZ EL 2016-07-25*/
-@Repository("ndDetCliDao") /*La variable inyectada en el service se debe llamar igual*/
+//@Repository("ndDetCliDao") /*La variable inyectada en el service se debe llamar igual*/
+@Repository
 public class NdDetCliDaoImpl implements INdDetCliDao{
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/

@@ -13,7 +13,8 @@ import com.gotn.model.PymeDentradas;
 
 
 /*Creado por JJARA EL 2016-07-25*/
-@Repository("dentradasDao") /*La variable inyectada en el service se debe llamar igual*/
+//@Repository("dentradasDao") /*La variable inyectada en el service se debe llamar igual*/
+@Repository
 public class DentradasDaoImpl implements IDentradasDao {
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/

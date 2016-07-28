@@ -8,22 +8,24 @@
 	
 
 
-	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-		destroy-method="close" scope="singleton">
-		<property name="driverClass" value="oracle.jdbc.OracleDriver"></property>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1522:xe"></property>
-		<property name="user" value="GOTN"></property>
-		<property name="password" value="GOTN"></property>
-		<property name="minPoolSize" value="5"></property>
-		<property name="maxPoolSize" value="10"></property>
-	</bean>
-	    <bean id="sessionFactory"  class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+        <property name="url" value="jdbc:oracle:thin:@localhost:1522:xe" />
+        <property name="username" value="GOTN" />
+        <property name="password" value="GOTN" />
+    </bean>
+ 
+<!-- Hibernate session factory -->
+   <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource">
             <ref bean="dataSource"/>
         </property>
         <property name="annotatedClasses">
             <list>
                 <value>com.gotn.model.PymeConsecutivos</value>
+                <value>com.gotn.model.PymeTipoCambio</value>
+                
             </list>
         </property>
         <property name="hibernateProperties">
@@ -35,9 +37,21 @@
         </property>
     </bean>
      
-	<bean name="txManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+     
+      <bean id="transactionManager"
+        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+     
+     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+ 	  <bean id="ISubetapaService" class="com.gotn.service.impl.SubetapaServiceImpl" />
+ 	  
+ 	  <bean id="ISysPermisosService" class="com.gotn.service.impl.SysPermisosServiceImpl" />
+ 	  <bean id="ISysSeguridadService" class="com.gotn.service.impl.SysSeguridadServiceImpl" />
+     <context:annotation-config/>
+     <context:component-scan base-package="com.gotn" />
+  
 
 </beans>

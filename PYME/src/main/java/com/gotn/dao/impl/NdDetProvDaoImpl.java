@@ -12,7 +12,8 @@ import com.gotn.dao.INdDetProvDao;
 import com.gotn.model.PymeConsecutivos;
 import com.gotn.model.PymeNdDetProv;
 /*Creado por ASANCHEZ EL 2016-07-25*/
-@Repository("ndDetProvDao") /*La variable inyectada en el service se debe llamar igual*/
+//@Repository("ndDetProvDao") /*La variable inyectada en el service se debe llamar igual*/
+@Repository
 public class NdDetProvDaoImpl implements INdDetProvDao{
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/

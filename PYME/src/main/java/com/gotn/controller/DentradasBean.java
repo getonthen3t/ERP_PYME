@@ -3,6 +3,7 @@ package com.gotn.controller;
 import java.io.Serializable;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.gotn.model.PymeConsecutivos;
@@ -13,6 +14,7 @@ import java.util.List;
 
 /*Creado por jjara 2016-07-26*/
 @Component
+@Scope("session")
 public class DentradasBean implements Serializable {
 
 	/**

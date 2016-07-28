@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.gotn.model.PymeConsecutivos;
 import com.gotn.service.IConsecutivoService;
 /*Creado por asanchez 2016-07-25*/
 @Component
+@Scope("session")
 public class ConsecutivoBean implements Serializable {
 /*	Spring maneja cuatro tipos de scope: singleton - prototype - session- request
  * 

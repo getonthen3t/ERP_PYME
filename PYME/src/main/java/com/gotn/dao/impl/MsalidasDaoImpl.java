@@ -12,7 +12,8 @@ import com.gotn.dao.IMsalidasDao;
 import com.gotn.model.PymeConsecutivos;
 import com.gotn.model.PymeMsalidas;
 /*Creado por ASANCHEZ EL 2016-07-25*/
-@Repository("msalidasDao") /*La variable inyectada en el service se debe llamar igual*/
+//@Repository("msalidasDao") /*La variable inyectada en el service se debe llamar igual*/
+@Repository
 public class MsalidasDaoImpl implements IMsalidasDao{
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/

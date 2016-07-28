@@ -13,7 +13,8 @@ import antlr.collections.List;
 
 
 /*Creado por JJARA EL 2016-07-25*/
-@Repository("facncDetCliDao") /*La variable inyectada en el service se debe llamar igual*/
+//@Repository("facncDetCliDao") /*La variable inyectada en el service se debe llamar igual*/
+@Repository
 public class FacncDetCliDaoImpl implements IFacncDetCliDao {
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/

@@ -3,6 +3,7 @@ package com.gotn.controller;
 import java.io.Serializable;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.gotn.model.PymeFacncDetCli;
 import com.gotn.service.IFacncDetCliService;
@@ -12,6 +13,7 @@ import com.gotn.service.IFacncDetCliService;
 
 /*Creado por jjara 2016-07-26*/
 @Component
+@Scope("session")
 public class FacncDetCliBean implements Serializable {
 
 	/**

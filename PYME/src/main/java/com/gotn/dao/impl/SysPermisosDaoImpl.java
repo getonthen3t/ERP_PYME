@@ -11,7 +11,8 @@ import org.springframework.stereotype.Repository;
 import com.gotn.dao.ISysPermisosDao;
 import com.gotn.model.PymeConsecutivos;
 import com.gotn.model.PymeSysPermisos;
-@Repository("sysPermisosDao") /*La variable inyectada en el service se debe llamar igual*/
+//@Repository("sysPermisosDao") /*La variable inyectada en el service se debe llamar igual*/
+@Repository
 public class SysPermisosDaoImpl implements ISysPermisosDao{
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/
