@@ -18,20 +18,20 @@ import javax.persistence.TemporalType;
 public class PymeTipoCambio implements java.io.Serializable {
 
 	private long tcId;
-	private BigDecimal tcCompra;
+	private double tcCompra;
 	private String tcMoneda;
 	private Date tcFecha;
 
 	public PymeTipoCambio() {
 	}
 
-	public PymeTipoCambio(long tcId, BigDecimal tcCompra, Date tcFecha) {
+	public PymeTipoCambio(long tcId, double tcCompra, Date tcFecha) {
 		this.tcId = tcId;
 		this.tcCompra = tcCompra;
 		this.tcFecha = tcFecha;
 	}
 
-	public PymeTipoCambio(long tcId, BigDecimal tcCompra, String tcMoneda, Date tcFecha) {
+	public PymeTipoCambio(long tcId, double tcCompra, String tcMoneda, Date tcFecha) {
 		this.tcId = tcId;
 		this.tcCompra = tcCompra;
 		this.tcMoneda = tcMoneda;
@@ -50,12 +50,12 @@ public class PymeTipoCambio implements java.io.Serializable {
 	}
 
 	@Column(name = "TC_COMPRA", nullable = false, precision = 18, scale = 3)
-	public BigDecimal getTcCompra() {
+	public double getTcCompra() {
 		return this.tcCompra;
 	}
 
-	public void setTcCompra(BigDecimal tcCompra) {
-		this.tcCompra = tcCompra;
+	public void setTcCompra(double d) {
+		this.tcCompra = d;
 	}
 
 	@Column(name = "TC_MONEDA", length = 10)

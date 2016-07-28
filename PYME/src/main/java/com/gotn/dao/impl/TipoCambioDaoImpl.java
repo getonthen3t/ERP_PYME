@@ -7,12 +7,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gotn.dao.ITipoCambioDao;
 import com.gotn.model.PymeConsecutivos;
 import com.gotn.model.PymeTipoCambio;
 //@Repository("tipoCambioDao") /*La variable inyectada en el service se debe llamar igual*/
 @Repository
+@Transactional
 public class TipoCambioDaoImpl implements ITipoCambioDao{
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/
@@ -23,6 +25,7 @@ public class TipoCambioDaoImpl implements ITipoCambioDao{
 		return getSession().createCriteria(PymeTipoCambio.class);
 		
 	}
+	@Transactional
 	public void guardarTipoCambio(PymeTipoCambio entidad) {
 		getSession().save(entidad);
 		

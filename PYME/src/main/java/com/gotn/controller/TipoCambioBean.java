@@ -1,7 +1,12 @@
 package com.gotn.controller;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import javax.faces.bean.ManagedBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -9,14 +14,20 @@ import org.springframework.stereotype.Component;
 import com.gotn.model.PymeTipoCambio;
 import com.gotn.service.ITipoCambioService;
 
+import oracle.sql.DATE;
+
 
 
 
 /*Creado por jjara 2016-07-26*/
 @Component
 @Scope("session")
+@ManagedBean
 public class TipoCambioBean implements Serializable {
-
+	
+	public TipoCambioBean() {
+		super();
+	}
 	/**
 	 * 
 	 */
@@ -42,11 +53,17 @@ public class TipoCambioBean implements Serializable {
 	 * 4-consultar
 	 * */
 	/* Metodos de acciones CRUD*/
-	public void agregar(){
+	public void agregar() throws ParseException{
 		tipoCambio = new PymeTipoCambio();
+		tipoCambio.setTcCompra(10000.222);
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+		String dateInString = "7-Jun-2013";
+		Date date = formatter.parse(dateInString);
+		tipoCambio.setTcFecha(date);
 		etiquetaBoton = "Guardar";
 		accion = 1;
 		habilitado = true;//es para saber si habilitamos los campos de captura del formulario.
+		guardarTipoCambio();
 	}
 	public void actualizar(PymeTipoCambio pojo){
 		tipoCambio = pojo;
