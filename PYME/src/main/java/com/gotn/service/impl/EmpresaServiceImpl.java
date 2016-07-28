@@ -10,7 +10,8 @@ import com.gotn.dao.IEmpresaDao;
 import com.gotn.model.PymeEmpresa;
 import com.gotn.service.IEmpresaService;
 /*Creado por: jjara 2016-07-25*/
-@Service("empresaService")
+//@Service("empresaService")
+@Service
 public class EmpresaServiceImpl implements IEmpresaService {
 	@Autowired
 	private IEmpresaDao empresaDao;

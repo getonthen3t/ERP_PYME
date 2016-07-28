@@ -12,7 +12,9 @@ import com.gotn.dao.INdEncProvDao;
 import com.gotn.model.PymeConsecutivos;
 import com.gotn.model.PymeNdEncProv;
 /*Creado por ASANCHEZ EL 2016-07-25*/
-@Repository("ndEncProvDao") /*La variable inyectada en el service se debe llamar igual*/
+//@Repository("ndEncProvDao") /*La variable inyectada en el service se debe llamar igual*/
+@Repository
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class NdEncProvDaoImpl implements INdEncProvDao{
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/

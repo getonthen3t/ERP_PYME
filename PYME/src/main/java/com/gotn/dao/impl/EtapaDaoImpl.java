@@ -14,7 +14,9 @@ import antlr.collections.List;
 
 
 /*Creado por JJARA EL 2016-07-25*/
-@Repository("etapaDao") /*La variable inyectada en el service se debe llamar igual*/
+//@Repository("etapaDao") /*La variable inyectada en el service se debe llamar igual*/
+@Repository
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class EtapaDaoImpl implements IEtapaDao {
 	@Autowired
 	private SessionFactory sessionFactory; /*Inyecta el bean que se declaro en el applicationContext.xml para el session factory*/

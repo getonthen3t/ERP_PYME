@@ -10,7 +10,8 @@ import com.gotn.dao.IDsalidasDao;
 import com.gotn.model.PymeDsalidas;
 import com.gotn.service.IDsalidasService;
 /*Creado por: jjara 2016-07-25*/
-@Service("dsalidasService")
+//@Service("dsalidasService")
+@Service
 public class DsalidasServiceImpl implements IDsalidasService {
 	@Autowired
 	private IDsalidasDao idSalidasDao;

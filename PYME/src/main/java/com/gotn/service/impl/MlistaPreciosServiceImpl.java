@@ -10,7 +10,8 @@ import com.gotn.dao.IMlistaPreciosDao;
 import com.gotn.model.PymeMlistaPrecios;
 import com.gotn.service.IMlistaPreciosService;
 /*Creado por: jjara 2016-07-26*/
-@Service("mlistaPreciosService")
+//@Service("mlistaPreciosService")
+@Service
 public class MlistaPreciosServiceImpl implements IMlistaPreciosService {
 	@Autowired
 	private IMlistaPreciosDao mlistaPreciosDao;

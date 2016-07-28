@@ -5,36 +5,36 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	
 
-	<context:annotation-config />
-	<context:component-scan base-package="com.gotn" />
 
 	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close" scope="singleton">
-		<property name="driver Class" value="oracle.jdbc.OracleDriver"></property>
+		<property name="driverClass" value="oracle.jdbc.OracleDriver"></property>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1522:xe"></property>
 		<property name="user" value="GOTN"></property>
 		<property name="password" value="GOTN"></property>
 		<property name="minPoolSize" value="5"></property>
 		<property name="maxPoolSize" value="10"></property>
 	</bean>
-	<bean name="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
-		<property name="mappingLocations">
-			<list>
-				<value> classpath:com/gotn/entity/*.hbm.xml</value>
-			</list>
-		</property>
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
-			</props>
-		</property>
-
-	</bean>
+	    <bean id="sessionFactory"  class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.gotn.model.PymeConsecutivos</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                 <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+                 <prop key="hibernate.show_sql">true</prop>
+                 <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+     
 	<bean name="txManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>

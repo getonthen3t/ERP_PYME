@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.gotn.model.PymeSubetapa;
 import com.gotn.service.ISubetapaService;
 /*Creado por: asanchez 2016-07-25*/
-@Service("subetapaService")
+@Service("z")
 public class SubetapaServiceImpl implements ISubetapaService {
 	@Autowired
 	private ISubetapaService subetapaDao;
