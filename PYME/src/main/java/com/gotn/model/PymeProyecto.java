@@ -1,5 +1,5 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,9 +24,9 @@ public class PymeProyecto implements java.io.Serializable {
 
 	private long proyId;
 	private PymeEmpresa pymeEmpresa;
-	private PymeDtipos pymeDtipos;
 	private String proyNombre;
 	private String proyDescripcion;
+	private long proyEstado;
 	private String proyCreadoPor;
 	private Date proyCreadoEl;
 	private Set<PymeSysSeguridad> pymeSysSeguridads = new HashSet<PymeSysSeguridad>(0);
@@ -36,25 +36,25 @@ public class PymeProyecto implements java.io.Serializable {
 	public PymeProyecto() {
 	}
 
-	public PymeProyecto(long proyId, PymeEmpresa pymeEmpresa, PymeDtipos pymeDtipos, String proyNombre,
-			String proyDescripcion, String proyCreadoPor, Date proyCreadoEl) {
+	public PymeProyecto(long proyId, PymeEmpresa pymeEmpresa, String proyNombre, String proyDescripcion,
+			long proyEstado, String proyCreadoPor, Date proyCreadoEl) {
 		this.proyId = proyId;
 		this.pymeEmpresa = pymeEmpresa;
-		this.pymeDtipos = pymeDtipos;
 		this.proyNombre = proyNombre;
 		this.proyDescripcion = proyDescripcion;
+		this.proyEstado = proyEstado;
 		this.proyCreadoPor = proyCreadoPor;
 		this.proyCreadoEl = proyCreadoEl;
 	}
 
-	public PymeProyecto(long proyId, PymeEmpresa pymeEmpresa, PymeDtipos pymeDtipos, String proyNombre,
-			String proyDescripcion, String proyCreadoPor, Date proyCreadoEl, Set<PymeSysSeguridad> pymeSysSeguridads,
+	public PymeProyecto(long proyId, PymeEmpresa pymeEmpresa, String proyNombre, String proyDescripcion,
+			long proyEstado, String proyCreadoPor, Date proyCreadoEl, Set<PymeSysSeguridad> pymeSysSeguridads,
 			Set<PymeFacncEncCli> pymeFacncEncClis, Set<PymeEtapa> pymeEtapas) {
 		this.proyId = proyId;
 		this.pymeEmpresa = pymeEmpresa;
-		this.pymeDtipos = pymeDtipos;
 		this.proyNombre = proyNombre;
 		this.proyDescripcion = proyDescripcion;
+		this.proyEstado = proyEstado;
 		this.proyCreadoPor = proyCreadoPor;
 		this.proyCreadoEl = proyCreadoEl;
 		this.pymeSysSeguridads = pymeSysSeguridads;
@@ -83,16 +83,6 @@ public class PymeProyecto implements java.io.Serializable {
 		this.pymeEmpresa = pymeEmpresa;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "PROY_ESTADO", nullable = false)
-	public PymeDtipos getPymeDtipos() {
-		return this.pymeDtipos;
-	}
-
-	public void setPymeDtipos(PymeDtipos pymeDtipos) {
-		this.pymeDtipos = pymeDtipos;
-	}
-
 	@Column(name = "PROY_NOMBRE", nullable = false, length = 200)
 	public String getProyNombre() {
 		return this.proyNombre;
@@ -109,6 +99,15 @@ public class PymeProyecto implements java.io.Serializable {
 
 	public void setProyDescripcion(String proyDescripcion) {
 		this.proyDescripcion = proyDescripcion;
+	}
+
+	@Column(name = "PROY_ESTADO", nullable = false, precision = 10, scale = 0)
+	public long getProyEstado() {
+		return this.proyEstado;
+	}
+
+	public void setProyEstado(long proyEstado) {
+		this.proyEstado = proyEstado;
 	}
 
 	@Column(name = "PROY_CREADO_POR", nullable = false, length = 100)

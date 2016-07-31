@@ -1,5 +1,5 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,11 +23,11 @@ import javax.persistence.UniqueConstraint;
 public class PymeMlistaPrecios implements java.io.Serializable {
 
 	private BigDecimal mlistId;
-	private PymeDtipos pymeDtipos;
 	private String mlistNombre;
 	private String mlistDescripcion;
 	private Date mlistCreadoEl;
 	private String mlistCreadoPor;
+	private Long mlistEstado;
 	private Set<PymeProductos> pymeProductoses = new HashSet<PymeProductos>(0);
 	private Set<PymeDlistaPrecios> pymeDlistaPrecioses = new HashSet<PymeDlistaPrecios>(0);
 
@@ -41,15 +39,15 @@ public class PymeMlistaPrecios implements java.io.Serializable {
 		this.mlistNombre = mlistNombre;
 	}
 
-	public PymeMlistaPrecios(BigDecimal mlistId, PymeDtipos pymeDtipos, String mlistNombre, String mlistDescripcion,
-			Date mlistCreadoEl, String mlistCreadoPor, Set<PymeProductos> pymeProductoses,
+	public PymeMlistaPrecios(BigDecimal mlistId, String mlistNombre, String mlistDescripcion, Date mlistCreadoEl,
+			String mlistCreadoPor, Long mlistEstado, Set<PymeProductos> pymeProductoses,
 			Set<PymeDlistaPrecios> pymeDlistaPrecioses) {
 		this.mlistId = mlistId;
-		this.pymeDtipos = pymeDtipos;
 		this.mlistNombre = mlistNombre;
 		this.mlistDescripcion = mlistDescripcion;
 		this.mlistCreadoEl = mlistCreadoEl;
 		this.mlistCreadoPor = mlistCreadoPor;
+		this.mlistEstado = mlistEstado;
 		this.pymeProductoses = pymeProductoses;
 		this.pymeDlistaPrecioses = pymeDlistaPrecioses;
 	}
@@ -63,16 +61,6 @@ public class PymeMlistaPrecios implements java.io.Serializable {
 
 	public void setMlistId(BigDecimal mlistId) {
 		this.mlistId = mlistId;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "MLIST_ESTADO")
-	public PymeDtipos getPymeDtipos() {
-		return this.pymeDtipos;
-	}
-
-	public void setPymeDtipos(PymeDtipos pymeDtipos) {
-		this.pymeDtipos = pymeDtipos;
 	}
 
 	@Column(name = "MLIST_NOMBRE", unique = true, nullable = false, length = 100)
@@ -110,6 +98,15 @@ public class PymeMlistaPrecios implements java.io.Serializable {
 
 	public void setMlistCreadoPor(String mlistCreadoPor) {
 		this.mlistCreadoPor = mlistCreadoPor;
+	}
+
+	@Column(name = "MLIST_ESTADO", precision = 10, scale = 0)
+	public Long getMlistEstado() {
+		return this.mlistEstado;
+	}
+
+	public void setMlistEstado(Long mlistEstado) {
+		this.mlistEstado = mlistEstado;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeMlistaPrecios")

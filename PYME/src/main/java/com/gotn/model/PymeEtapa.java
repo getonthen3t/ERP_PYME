@@ -1,5 +1,5 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,9 +24,9 @@ public class PymeEtapa implements java.io.Serializable {
 
 	private long etaId;
 	private PymeProyecto pymeProyecto;
-	private PymeDtipos pymeDtipos;
 	private String etaNombre;
 	private String etaDescripcion;
+	private Long etaEstado;
 	private Date creadoEl;
 	private String creadoPor;
 	private Set<PymeSubetapa> pymeSubetapas = new HashSet<PymeSubetapa>(0);
@@ -40,13 +40,13 @@ public class PymeEtapa implements java.io.Serializable {
 		this.etaNombre = etaNombre;
 	}
 
-	public PymeEtapa(long etaId, PymeProyecto pymeProyecto, PymeDtipos pymeDtipos, String etaNombre,
-			String etaDescripcion, Date creadoEl, String creadoPor, Set<PymeSubetapa> pymeSubetapas) {
+	public PymeEtapa(long etaId, PymeProyecto pymeProyecto, String etaNombre, String etaDescripcion, Long etaEstado,
+			Date creadoEl, String creadoPor, Set<PymeSubetapa> pymeSubetapas) {
 		this.etaId = etaId;
 		this.pymeProyecto = pymeProyecto;
-		this.pymeDtipos = pymeDtipos;
 		this.etaNombre = etaNombre;
 		this.etaDescripcion = etaDescripcion;
+		this.etaEstado = etaEstado;
 		this.creadoEl = creadoEl;
 		this.creadoPor = creadoPor;
 		this.pymeSubetapas = pymeSubetapas;
@@ -73,16 +73,6 @@ public class PymeEtapa implements java.io.Serializable {
 		this.pymeProyecto = pymeProyecto;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ETA_ESTADO")
-	public PymeDtipos getPymeDtipos() {
-		return this.pymeDtipos;
-	}
-
-	public void setPymeDtipos(PymeDtipos pymeDtipos) {
-		this.pymeDtipos = pymeDtipos;
-	}
-
 	@Column(name = "ETA_NOMBRE", nullable = false, length = 100)
 	public String getEtaNombre() {
 		return this.etaNombre;
@@ -99,6 +89,15 @@ public class PymeEtapa implements java.io.Serializable {
 
 	public void setEtaDescripcion(String etaDescripcion) {
 		this.etaDescripcion = etaDescripcion;
+	}
+
+	@Column(name = "ETA_ESTADO", precision = 10, scale = 0)
+	public Long getEtaEstado() {
+		return this.etaEstado;
+	}
+
+	public void setEtaEstado(Long etaEstado) {
+		this.etaEstado = etaEstado;
 	}
 
 	@Temporal(TemporalType.DATE)

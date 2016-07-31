@@ -1,5 +1,5 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.math.BigDecimal;
 import java.util.Date;

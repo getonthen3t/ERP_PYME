@@ -1,17 +1,11 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,92 +19,31 @@ import javax.persistence.UniqueConstraint;
 public class PymeDtipos implements java.io.Serializable {
 
 	private long dtipoId;
-	private PymeMtipos pymeMtipos;
+	private long mtipoId;
 	private String dtipoNombre;
 	private boolean dtipoEstado;
 	private Date dtipoCreadoEl;
 	private BigDecimal dtipoCantidad;
-	private Set<PymeProductos> pymeProductosesForProducTipo = new HashSet<PymeProductos>(0);
-	private Set<PymeMlistaPrecios> pymeMlistaPrecioses = new HashSet<PymeMlistaPrecios>(0);
-	private Set<PymeNdEncCli> pymeNdEncClisForNdcliEstado = new HashSet<PymeNdEncCli>(0);
-	private Set<PymeEmpresa> pymeEmpresas = new HashSet<PymeEmpresa>(0);
-	private Set<PymeNdEncCli> pymeNdEncClisForNdcliTipoFacnd = new HashSet<PymeNdEncCli>(0);
-	private Set<PymeProductos> pymeProductosesForProducEstado = new HashSet<PymeProductos>(0);
-	private Set<PymeProductos> pymeProductosesForProducMedida = new HashSet<PymeProductos>(0);
-	private Set<PymeProyecto> pymeProyectos = new HashSet<PymeProyecto>(0);
-	private Set<PymeFacncEncProv> pymeFacncEncProvsForFacprovTipoDoc = new HashSet<PymeFacncEncProv>(0);
-	private Set<PymeFacncEncCli> pymeFacncEncClisForFacTipoFacnd = new HashSet<PymeFacncEncCli>(0);
-	private Set<PymeEtapa> pymeEtapas = new HashSet<PymeEtapa>(0);
-	private Set<PymeFacncEncCli> pymeFacncEncClisForFacEstado = new HashSet<PymeFacncEncCli>(0);
-	private Set<PymeFacncEncProv> pymeFacncEncProvsForFacprovEstado = new HashSet<PymeFacncEncProv>(0);
-	private Set<PymeFacncEncCli> pymeFacncEncClisForFacTipoDoc = new HashSet<PymeFacncEncCli>(0);
-	private Set<PymeFacncEncProv> pymeFacncEncProvsForFacprovTipoFacnd = new HashSet<PymeFacncEncProv>(0);
-	private Set<PymeDsalidas> pymeDsalidasesForDsalTipoMov = new HashSet<PymeDsalidas>(0);
-	private Set<PymeDsalidas> pymeDsalidasesForDsalEstadoDoc = new HashSet<PymeDsalidas>(0);
-	private Set<PymeSocios> pymeSociosesForSocTipoSocio = new HashSet<PymeSocios>(0);
-	private Set<PymeSocios> pymeSociosesForSocTipoCredito = new HashSet<PymeSocios>(0);
-	private Set<PymeSocios> pymeSociosesForSocTipoPlazo = new HashSet<PymeSocios>(0);
-	private Set<PymeSocios> pymeSociosesForSocGrupoClientes = new HashSet<PymeSocios>(0);
-	private Set<PymeNdEncProv> pymeNdEncProvsForNdprovTipoFacnd = new HashSet<PymeNdEncProv>(0);
-	private Set<PymeNdEncProv> pymeNdEncProvsForNdprovEstado = new HashSet<PymeNdEncProv>(0);
-	private Set<PymeSubetapa> pymeSubetapas = new HashSet<PymeSubetapa>(0);
 
 	public PymeDtipos() {
 	}
 
-	public PymeDtipos(long dtipoId, PymeMtipos pymeMtipos, String dtipoNombre, boolean dtipoEstado,
-			Date dtipoCreadoEl) {
+	public PymeDtipos(long dtipoId, long mtipoId, String dtipoNombre, boolean dtipoEstado, Date dtipoCreadoEl) {
 		this.dtipoId = dtipoId;
-		this.pymeMtipos = pymeMtipos;
+		this.mtipoId = mtipoId;
 		this.dtipoNombre = dtipoNombre;
 		this.dtipoEstado = dtipoEstado;
 		this.dtipoCreadoEl = dtipoCreadoEl;
 	}
 
-	public PymeDtipos(long dtipoId, PymeMtipos pymeMtipos, String dtipoNombre, boolean dtipoEstado, Date dtipoCreadoEl,
-			BigDecimal dtipoCantidad, Set<PymeProductos> pymeProductosesForProducTipo,
-			Set<PymeMlistaPrecios> pymeMlistaPrecioses, Set<PymeNdEncCli> pymeNdEncClisForNdcliEstado,
-			Set<PymeEmpresa> pymeEmpresas, Set<PymeNdEncCli> pymeNdEncClisForNdcliTipoFacnd,
-			Set<PymeProductos> pymeProductosesForProducEstado, Set<PymeProductos> pymeProductosesForProducMedida,
-			Set<PymeProyecto> pymeProyectos, Set<PymeFacncEncProv> pymeFacncEncProvsForFacprovTipoDoc,
-			Set<PymeFacncEncCli> pymeFacncEncClisForFacTipoFacnd, Set<PymeEtapa> pymeEtapas,
-			Set<PymeFacncEncCli> pymeFacncEncClisForFacEstado, Set<PymeFacncEncProv> pymeFacncEncProvsForFacprovEstado,
-			Set<PymeFacncEncCli> pymeFacncEncClisForFacTipoDoc,
-			Set<PymeFacncEncProv> pymeFacncEncProvsForFacprovTipoFacnd, Set<PymeDsalidas> pymeDsalidasesForDsalTipoMov,
-			Set<PymeDsalidas> pymeDsalidasesForDsalEstadoDoc, Set<PymeSocios> pymeSociosesForSocTipoSocio,
-			Set<PymeSocios> pymeSociosesForSocTipoCredito, Set<PymeSocios> pymeSociosesForSocTipoPlazo,
-			Set<PymeSocios> pymeSociosesForSocGrupoClientes, Set<PymeNdEncProv> pymeNdEncProvsForNdprovTipoFacnd,
-			Set<PymeNdEncProv> pymeNdEncProvsForNdprovEstado, Set<PymeSubetapa> pymeSubetapas) {
+	public PymeDtipos(long dtipoId, long mtipoId, String dtipoNombre, boolean dtipoEstado, Date dtipoCreadoEl,
+			BigDecimal dtipoCantidad) {
 		this.dtipoId = dtipoId;
-		this.pymeMtipos = pymeMtipos;
+		this.mtipoId = mtipoId;
 		this.dtipoNombre = dtipoNombre;
 		this.dtipoEstado = dtipoEstado;
 		this.dtipoCreadoEl = dtipoCreadoEl;
 		this.dtipoCantidad = dtipoCantidad;
-		this.pymeProductosesForProducTipo = pymeProductosesForProducTipo;
-		this.pymeMlistaPrecioses = pymeMlistaPrecioses;
-		this.pymeNdEncClisForNdcliEstado = pymeNdEncClisForNdcliEstado;
-		this.pymeEmpresas = pymeEmpresas;
-		this.pymeNdEncClisForNdcliTipoFacnd = pymeNdEncClisForNdcliTipoFacnd;
-		this.pymeProductosesForProducEstado = pymeProductosesForProducEstado;
-		this.pymeProductosesForProducMedida = pymeProductosesForProducMedida;
-		this.pymeProyectos = pymeProyectos;
-		this.pymeFacncEncProvsForFacprovTipoDoc = pymeFacncEncProvsForFacprovTipoDoc;
-		this.pymeFacncEncClisForFacTipoFacnd = pymeFacncEncClisForFacTipoFacnd;
-		this.pymeEtapas = pymeEtapas;
-		this.pymeFacncEncClisForFacEstado = pymeFacncEncClisForFacEstado;
-		this.pymeFacncEncProvsForFacprovEstado = pymeFacncEncProvsForFacprovEstado;
-		this.pymeFacncEncClisForFacTipoDoc = pymeFacncEncClisForFacTipoDoc;
-		this.pymeFacncEncProvsForFacprovTipoFacnd = pymeFacncEncProvsForFacprovTipoFacnd;
-		this.pymeDsalidasesForDsalTipoMov = pymeDsalidasesForDsalTipoMov;
-		this.pymeDsalidasesForDsalEstadoDoc = pymeDsalidasesForDsalEstadoDoc;
-		this.pymeSociosesForSocTipoSocio = pymeSociosesForSocTipoSocio;
-		this.pymeSociosesForSocTipoCredito = pymeSociosesForSocTipoCredito;
-		this.pymeSociosesForSocTipoPlazo = pymeSociosesForSocTipoPlazo;
-		this.pymeSociosesForSocGrupoClientes = pymeSociosesForSocGrupoClientes;
-		this.pymeNdEncProvsForNdprovTipoFacnd = pymeNdEncProvsForNdprovTipoFacnd;
-		this.pymeNdEncProvsForNdprovEstado = pymeNdEncProvsForNdprovEstado;
-		this.pymeSubetapas = pymeSubetapas;
 	}
 
 	@Id
@@ -124,14 +57,13 @@ public class PymeDtipos implements java.io.Serializable {
 		this.dtipoId = dtipoId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "MTIPO_ID", nullable = false)
-	public PymeMtipos getPymeMtipos() {
-		return this.pymeMtipos;
+	@Column(name = "MTIPO_ID", nullable = false, precision = 10, scale = 0)
+	public long getMtipoId() {
+		return this.mtipoId;
 	}
 
-	public void setPymeMtipos(PymeMtipos pymeMtipos) {
-		this.pymeMtipos = pymeMtipos;
+	public void setMtipoId(long mtipoId) {
+		this.mtipoId = mtipoId;
 	}
 
 	@Column(name = "DTIPO_NOMBRE", nullable = false, length = 50)
@@ -169,222 +101,6 @@ public class PymeDtipos implements java.io.Serializable {
 
 	public void setDtipoCantidad(BigDecimal dtipoCantidad) {
 		this.dtipoCantidad = dtipoCantidad;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByProducTipo")
-	public Set<PymeProductos> getPymeProductosesForProducTipo() {
-		return this.pymeProductosesForProducTipo;
-	}
-
-	public void setPymeProductosesForProducTipo(Set<PymeProductos> pymeProductosesForProducTipo) {
-		this.pymeProductosesForProducTipo = pymeProductosesForProducTipo;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtipos")
-	public Set<PymeMlistaPrecios> getPymeMlistaPrecioses() {
-		return this.pymeMlistaPrecioses;
-	}
-
-	public void setPymeMlistaPrecioses(Set<PymeMlistaPrecios> pymeMlistaPrecioses) {
-		this.pymeMlistaPrecioses = pymeMlistaPrecioses;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByNdcliEstado")
-	public Set<PymeNdEncCli> getPymeNdEncClisForNdcliEstado() {
-		return this.pymeNdEncClisForNdcliEstado;
-	}
-
-	public void setPymeNdEncClisForNdcliEstado(Set<PymeNdEncCli> pymeNdEncClisForNdcliEstado) {
-		this.pymeNdEncClisForNdcliEstado = pymeNdEncClisForNdcliEstado;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtipos")
-	public Set<PymeEmpresa> getPymeEmpresas() {
-		return this.pymeEmpresas;
-	}
-
-	public void setPymeEmpresas(Set<PymeEmpresa> pymeEmpresas) {
-		this.pymeEmpresas = pymeEmpresas;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByNdcliTipoFacnd")
-	public Set<PymeNdEncCli> getPymeNdEncClisForNdcliTipoFacnd() {
-		return this.pymeNdEncClisForNdcliTipoFacnd;
-	}
-
-	public void setPymeNdEncClisForNdcliTipoFacnd(Set<PymeNdEncCli> pymeNdEncClisForNdcliTipoFacnd) {
-		this.pymeNdEncClisForNdcliTipoFacnd = pymeNdEncClisForNdcliTipoFacnd;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByProducEstado")
-	public Set<PymeProductos> getPymeProductosesForProducEstado() {
-		return this.pymeProductosesForProducEstado;
-	}
-
-	public void setPymeProductosesForProducEstado(Set<PymeProductos> pymeProductosesForProducEstado) {
-		this.pymeProductosesForProducEstado = pymeProductosesForProducEstado;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByProducMedida")
-	public Set<PymeProductos> getPymeProductosesForProducMedida() {
-		return this.pymeProductosesForProducMedida;
-	}
-
-	public void setPymeProductosesForProducMedida(Set<PymeProductos> pymeProductosesForProducMedida) {
-		this.pymeProductosesForProducMedida = pymeProductosesForProducMedida;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtipos")
-	public Set<PymeProyecto> getPymeProyectos() {
-		return this.pymeProyectos;
-	}
-
-	public void setPymeProyectos(Set<PymeProyecto> pymeProyectos) {
-		this.pymeProyectos = pymeProyectos;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByFacprovTipoDoc")
-	public Set<PymeFacncEncProv> getPymeFacncEncProvsForFacprovTipoDoc() {
-		return this.pymeFacncEncProvsForFacprovTipoDoc;
-	}
-
-	public void setPymeFacncEncProvsForFacprovTipoDoc(Set<PymeFacncEncProv> pymeFacncEncProvsForFacprovTipoDoc) {
-		this.pymeFacncEncProvsForFacprovTipoDoc = pymeFacncEncProvsForFacprovTipoDoc;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByFacTipoFacnd")
-	public Set<PymeFacncEncCli> getPymeFacncEncClisForFacTipoFacnd() {
-		return this.pymeFacncEncClisForFacTipoFacnd;
-	}
-
-	public void setPymeFacncEncClisForFacTipoFacnd(Set<PymeFacncEncCli> pymeFacncEncClisForFacTipoFacnd) {
-		this.pymeFacncEncClisForFacTipoFacnd = pymeFacncEncClisForFacTipoFacnd;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtipos")
-	public Set<PymeEtapa> getPymeEtapas() {
-		return this.pymeEtapas;
-	}
-
-	public void setPymeEtapas(Set<PymeEtapa> pymeEtapas) {
-		this.pymeEtapas = pymeEtapas;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByFacEstado")
-	public Set<PymeFacncEncCli> getPymeFacncEncClisForFacEstado() {
-		return this.pymeFacncEncClisForFacEstado;
-	}
-
-	public void setPymeFacncEncClisForFacEstado(Set<PymeFacncEncCli> pymeFacncEncClisForFacEstado) {
-		this.pymeFacncEncClisForFacEstado = pymeFacncEncClisForFacEstado;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByFacprovEstado")
-	public Set<PymeFacncEncProv> getPymeFacncEncProvsForFacprovEstado() {
-		return this.pymeFacncEncProvsForFacprovEstado;
-	}
-
-	public void setPymeFacncEncProvsForFacprovEstado(Set<PymeFacncEncProv> pymeFacncEncProvsForFacprovEstado) {
-		this.pymeFacncEncProvsForFacprovEstado = pymeFacncEncProvsForFacprovEstado;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByFacTipoDoc")
-	public Set<PymeFacncEncCli> getPymeFacncEncClisForFacTipoDoc() {
-		return this.pymeFacncEncClisForFacTipoDoc;
-	}
-
-	public void setPymeFacncEncClisForFacTipoDoc(Set<PymeFacncEncCli> pymeFacncEncClisForFacTipoDoc) {
-		this.pymeFacncEncClisForFacTipoDoc = pymeFacncEncClisForFacTipoDoc;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByFacprovTipoFacnd")
-	public Set<PymeFacncEncProv> getPymeFacncEncProvsForFacprovTipoFacnd() {
-		return this.pymeFacncEncProvsForFacprovTipoFacnd;
-	}
-
-	public void setPymeFacncEncProvsForFacprovTipoFacnd(Set<PymeFacncEncProv> pymeFacncEncProvsForFacprovTipoFacnd) {
-		this.pymeFacncEncProvsForFacprovTipoFacnd = pymeFacncEncProvsForFacprovTipoFacnd;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByDsalTipoMov")
-	public Set<PymeDsalidas> getPymeDsalidasesForDsalTipoMov() {
-		return this.pymeDsalidasesForDsalTipoMov;
-	}
-
-	public void setPymeDsalidasesForDsalTipoMov(Set<PymeDsalidas> pymeDsalidasesForDsalTipoMov) {
-		this.pymeDsalidasesForDsalTipoMov = pymeDsalidasesForDsalTipoMov;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByDsalEstadoDoc")
-	public Set<PymeDsalidas> getPymeDsalidasesForDsalEstadoDoc() {
-		return this.pymeDsalidasesForDsalEstadoDoc;
-	}
-
-	public void setPymeDsalidasesForDsalEstadoDoc(Set<PymeDsalidas> pymeDsalidasesForDsalEstadoDoc) {
-		this.pymeDsalidasesForDsalEstadoDoc = pymeDsalidasesForDsalEstadoDoc;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposBySocTipoSocio")
-	public Set<PymeSocios> getPymeSociosesForSocTipoSocio() {
-		return this.pymeSociosesForSocTipoSocio;
-	}
-
-	public void setPymeSociosesForSocTipoSocio(Set<PymeSocios> pymeSociosesForSocTipoSocio) {
-		this.pymeSociosesForSocTipoSocio = pymeSociosesForSocTipoSocio;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposBySocTipoCredito")
-	public Set<PymeSocios> getPymeSociosesForSocTipoCredito() {
-		return this.pymeSociosesForSocTipoCredito;
-	}
-
-	public void setPymeSociosesForSocTipoCredito(Set<PymeSocios> pymeSociosesForSocTipoCredito) {
-		this.pymeSociosesForSocTipoCredito = pymeSociosesForSocTipoCredito;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposBySocTipoPlazo")
-	public Set<PymeSocios> getPymeSociosesForSocTipoPlazo() {
-		return this.pymeSociosesForSocTipoPlazo;
-	}
-
-	public void setPymeSociosesForSocTipoPlazo(Set<PymeSocios> pymeSociosesForSocTipoPlazo) {
-		this.pymeSociosesForSocTipoPlazo = pymeSociosesForSocTipoPlazo;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposBySocGrupoClientes")
-	public Set<PymeSocios> getPymeSociosesForSocGrupoClientes() {
-		return this.pymeSociosesForSocGrupoClientes;
-	}
-
-	public void setPymeSociosesForSocGrupoClientes(Set<PymeSocios> pymeSociosesForSocGrupoClientes) {
-		this.pymeSociosesForSocGrupoClientes = pymeSociosesForSocGrupoClientes;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByNdprovTipoFacnd")
-	public Set<PymeNdEncProv> getPymeNdEncProvsForNdprovTipoFacnd() {
-		return this.pymeNdEncProvsForNdprovTipoFacnd;
-	}
-
-	public void setPymeNdEncProvsForNdprovTipoFacnd(Set<PymeNdEncProv> pymeNdEncProvsForNdprovTipoFacnd) {
-		this.pymeNdEncProvsForNdprovTipoFacnd = pymeNdEncProvsForNdprovTipoFacnd;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtiposByNdprovEstado")
-	public Set<PymeNdEncProv> getPymeNdEncProvsForNdprovEstado() {
-		return this.pymeNdEncProvsForNdprovEstado;
-	}
-
-	public void setPymeNdEncProvsForNdprovEstado(Set<PymeNdEncProv> pymeNdEncProvsForNdprovEstado) {
-		this.pymeNdEncProvsForNdprovEstado = pymeNdEncProvsForNdprovEstado;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeDtipos")
-	public Set<PymeSubetapa> getPymeSubetapas() {
-		return this.pymeSubetapas;
-	}
-
-	public void setPymeSubetapas(Set<PymeSubetapa> pymeSubetapas) {
-		this.pymeSubetapas = pymeSubetapas;
 	}
 
 }

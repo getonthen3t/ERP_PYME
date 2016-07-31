@@ -1,5 +1,5 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -24,10 +24,7 @@ import javax.persistence.TemporalType;
 public class PymeFacncEncCli implements java.io.Serializable {
 
 	private long facId;
-	private PymeDtipos pymeDtiposByFacEstado;
 	private PymeProyecto pymeProyecto;
-	private PymeDtipos pymeDtiposByFacTipoFacnd;
-	private PymeDtipos pymeDtiposByFacTipoDoc;
 	private long facConsectivo;
 	private BigDecimal idSoc;
 	private String facSocNombre;
@@ -38,32 +35,31 @@ public class PymeFacncEncCli implements java.io.Serializable {
 	private Date facContabilizacion;
 	private Long facDocBase;
 	private Long facDocDestino;
+	private long facTipoDoc;
+	private BigDecimal facEstado;
 	private String facComentarios;
+	private long facTipoFacnd;
 	private Set<PymeFacncDetCli> pymeFacncDetClis = new HashSet<PymeFacncDetCli>(0);
 
 	public PymeFacncEncCli() {
 	}
 
-	public PymeFacncEncCli(long facId, PymeDtipos pymeDtiposByFacEstado, PymeProyecto pymeProyecto,
-			PymeDtipos pymeDtiposByFacTipoFacnd, PymeDtipos pymeDtiposByFacTipoDoc, long facConsectivo) {
+	public PymeFacncEncCli(long facId, PymeProyecto pymeProyecto, long facConsectivo, long facTipoDoc,
+			BigDecimal facEstado, long facTipoFacnd) {
 		this.facId = facId;
-		this.pymeDtiposByFacEstado = pymeDtiposByFacEstado;
 		this.pymeProyecto = pymeProyecto;
-		this.pymeDtiposByFacTipoFacnd = pymeDtiposByFacTipoFacnd;
-		this.pymeDtiposByFacTipoDoc = pymeDtiposByFacTipoDoc;
 		this.facConsectivo = facConsectivo;
+		this.facTipoDoc = facTipoDoc;
+		this.facEstado = facEstado;
+		this.facTipoFacnd = facTipoFacnd;
 	}
 
-	public PymeFacncEncCli(long facId, PymeDtipos pymeDtiposByFacEstado, PymeProyecto pymeProyecto,
-			PymeDtipos pymeDtiposByFacTipoFacnd, PymeDtipos pymeDtiposByFacTipoDoc, long facConsectivo,
-			BigDecimal idSoc, String facSocNombre, BigDecimal facTotalLocal, BigDecimal facTotalExtranjero,
-			String facTipoCambio, Date facFechaDoc, Date facContabilizacion, Long facDocBase, Long facDocDestino,
-			String facComentarios, Set<PymeFacncDetCli> pymeFacncDetClis) {
+	public PymeFacncEncCli(long facId, PymeProyecto pymeProyecto, long facConsectivo, BigDecimal idSoc,
+			String facSocNombre, BigDecimal facTotalLocal, BigDecimal facTotalExtranjero, String facTipoCambio,
+			Date facFechaDoc, Date facContabilizacion, Long facDocBase, Long facDocDestino, long facTipoDoc,
+			BigDecimal facEstado, String facComentarios, long facTipoFacnd, Set<PymeFacncDetCli> pymeFacncDetClis) {
 		this.facId = facId;
-		this.pymeDtiposByFacEstado = pymeDtiposByFacEstado;
 		this.pymeProyecto = pymeProyecto;
-		this.pymeDtiposByFacTipoFacnd = pymeDtiposByFacTipoFacnd;
-		this.pymeDtiposByFacTipoDoc = pymeDtiposByFacTipoDoc;
 		this.facConsectivo = facConsectivo;
 		this.idSoc = idSoc;
 		this.facSocNombre = facSocNombre;
@@ -74,7 +70,10 @@ public class PymeFacncEncCli implements java.io.Serializable {
 		this.facContabilizacion = facContabilizacion;
 		this.facDocBase = facDocBase;
 		this.facDocDestino = facDocDestino;
+		this.facTipoDoc = facTipoDoc;
+		this.facEstado = facEstado;
 		this.facComentarios = facComentarios;
+		this.facTipoFacnd = facTipoFacnd;
 		this.pymeFacncDetClis = pymeFacncDetClis;
 	}
 
@@ -90,16 +89,6 @@ public class PymeFacncEncCli implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "FAC_ESTADO", nullable = false)
-	public PymeDtipos getPymeDtiposByFacEstado() {
-		return this.pymeDtiposByFacEstado;
-	}
-
-	public void setPymeDtiposByFacEstado(PymeDtipos pymeDtiposByFacEstado) {
-		this.pymeDtiposByFacEstado = pymeDtiposByFacEstado;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PROY_ID", nullable = false)
 	public PymeProyecto getPymeProyecto() {
 		return this.pymeProyecto;
@@ -107,26 +96,6 @@ public class PymeFacncEncCli implements java.io.Serializable {
 
 	public void setPymeProyecto(PymeProyecto pymeProyecto) {
 		this.pymeProyecto = pymeProyecto;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "FAC_TIPO_FACND", nullable = false)
-	public PymeDtipos getPymeDtiposByFacTipoFacnd() {
-		return this.pymeDtiposByFacTipoFacnd;
-	}
-
-	public void setPymeDtiposByFacTipoFacnd(PymeDtipos pymeDtiposByFacTipoFacnd) {
-		this.pymeDtiposByFacTipoFacnd = pymeDtiposByFacTipoFacnd;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "FAC_TIPO_DOC", nullable = false)
-	public PymeDtipos getPymeDtiposByFacTipoDoc() {
-		return this.pymeDtiposByFacTipoDoc;
-	}
-
-	public void setPymeDtiposByFacTipoDoc(PymeDtipos pymeDtiposByFacTipoDoc) {
-		this.pymeDtiposByFacTipoDoc = pymeDtiposByFacTipoDoc;
 	}
 
 	@Column(name = "FAC_CONSECTIVO", nullable = false, precision = 18, scale = 0)
@@ -221,6 +190,24 @@ public class PymeFacncEncCli implements java.io.Serializable {
 		this.facDocDestino = facDocDestino;
 	}
 
+	@Column(name = "FAC_TIPO_DOC", nullable = false, precision = 10, scale = 0)
+	public long getFacTipoDoc() {
+		return this.facTipoDoc;
+	}
+
+	public void setFacTipoDoc(long facTipoDoc) {
+		this.facTipoDoc = facTipoDoc;
+	}
+
+	@Column(name = "FAC_ESTADO", nullable = false, precision = 22, scale = 0)
+	public BigDecimal getFacEstado() {
+		return this.facEstado;
+	}
+
+	public void setFacEstado(BigDecimal facEstado) {
+		this.facEstado = facEstado;
+	}
+
 	@Column(name = "FAC_COMENTARIOS", length = 200)
 	public String getFacComentarios() {
 		return this.facComentarios;
@@ -228,6 +215,15 @@ public class PymeFacncEncCli implements java.io.Serializable {
 
 	public void setFacComentarios(String facComentarios) {
 		this.facComentarios = facComentarios;
+	}
+
+	@Column(name = "FAC_TIPO_FACND", nullable = false, precision = 10, scale = 0)
+	public long getFacTipoFacnd() {
+		return this.facTipoFacnd;
+	}
+
+	public void setFacTipoFacnd(long facTipoFacnd) {
+		this.facTipoFacnd = facTipoFacnd;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeFacncEncCli")

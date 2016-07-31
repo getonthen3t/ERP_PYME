@@ -25,6 +25,7 @@
             <list>
                 <value>com.gotn.model.PymeConsecutivos</value>
                 <value>com.gotn.model.PymeTipoCambio</value>
+                <value>com.gotn.model.PymeProyecto</value>
                 
             </list>
         </property>

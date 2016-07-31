@@ -1,5 +1,5 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -23,9 +23,9 @@ import javax.persistence.TemporalType;
 public class PymeSubetapa implements java.io.Serializable {
 
 	private long subetaId;
-	private PymeDtipos pymeDtipos;
 	private PymeEtapa pymeEtapa;
 	private String subetaNombre;
+	private Long subetaEstado;
 	private Date subetaCreadoEl;
 	private String subetaCreadoPor;
 	private Set<PymeMsalidas> pymeMsalidases = new HashSet<PymeMsalidas>(0);
@@ -40,13 +40,12 @@ public class PymeSubetapa implements java.io.Serializable {
 		this.subetaNombre = subetaNombre;
 	}
 
-	public PymeSubetapa(long subetaId, PymeDtipos pymeDtipos, PymeEtapa pymeEtapa, String subetaNombre,
-			Date subetaCreadoEl, String subetaCreadoPor, Set<PymeMsalidas> pymeMsalidases,
-			Set<PymeMentradas> pymeMentradases) {
+	public PymeSubetapa(long subetaId, PymeEtapa pymeEtapa, String subetaNombre, Long subetaEstado, Date subetaCreadoEl,
+			String subetaCreadoPor, Set<PymeMsalidas> pymeMsalidases, Set<PymeMentradas> pymeMentradases) {
 		this.subetaId = subetaId;
-		this.pymeDtipos = pymeDtipos;
 		this.pymeEtapa = pymeEtapa;
 		this.subetaNombre = subetaNombre;
+		this.subetaEstado = subetaEstado;
 		this.subetaCreadoEl = subetaCreadoEl;
 		this.subetaCreadoPor = subetaCreadoPor;
 		this.pymeMsalidases = pymeMsalidases;
@@ -62,16 +61,6 @@ public class PymeSubetapa implements java.io.Serializable {
 
 	public void setSubetaId(long subetaId) {
 		this.subetaId = subetaId;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "SUBETA_ESTADO")
-	public PymeDtipos getPymeDtipos() {
-		return this.pymeDtipos;
-	}
-
-	public void setPymeDtipos(PymeDtipos pymeDtipos) {
-		this.pymeDtipos = pymeDtipos;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -91,6 +80,15 @@ public class PymeSubetapa implements java.io.Serializable {
 
 	public void setSubetaNombre(String subetaNombre) {
 		this.subetaNombre = subetaNombre;
+	}
+
+	@Column(name = "SUBETA_ESTADO", precision = 10, scale = 0)
+	public Long getSubetaEstado() {
+		return this.subetaEstado;
+	}
+
+	public void setSubetaEstado(Long subetaEstado) {
+		this.subetaEstado = subetaEstado;
 	}
 
 	@Temporal(TemporalType.DATE)

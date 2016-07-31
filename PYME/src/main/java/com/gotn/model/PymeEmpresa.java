@@ -1,5 +1,5 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,7 +22,6 @@ import javax.persistence.TemporalType;
 public class PymeEmpresa implements java.io.Serializable {
 
 	private long empId;
-	private PymeDtipos pymeDtipos;
 	private String empNombre;
 	private String empNombreImpreso;
 	private byte empIdJuridico;
@@ -37,6 +34,7 @@ public class PymeEmpresa implements java.io.Serializable {
 	private String empRutaLogo;
 	private String empCreadoPor;
 	private Date creadoEl;
+	private long empEstado;
 	private BigDecimal empImpuestoVentas;
 	private Set<PymeProyecto> pymeProyectos = new HashSet<PymeProyecto>(0);
 	private Set<PymeSysUsers> pymeSysUserses = new HashSet<PymeSysUsers>(0);
@@ -44,24 +42,23 @@ public class PymeEmpresa implements java.io.Serializable {
 	public PymeEmpresa() {
 	}
 
-	public PymeEmpresa(long empId, PymeDtipos pymeDtipos, String empNombre, byte empIdJuridico, String empDireccion,
-			String empTelefono1, String empCreadoPor, BigDecimal empImpuestoVentas) {
+	public PymeEmpresa(long empId, String empNombre, byte empIdJuridico, String empDireccion, String empTelefono1,
+			String empCreadoPor, long empEstado, BigDecimal empImpuestoVentas) {
 		this.empId = empId;
-		this.pymeDtipos = pymeDtipos;
 		this.empNombre = empNombre;
 		this.empIdJuridico = empIdJuridico;
 		this.empDireccion = empDireccion;
 		this.empTelefono1 = empTelefono1;
 		this.empCreadoPor = empCreadoPor;
+		this.empEstado = empEstado;
 		this.empImpuestoVentas = empImpuestoVentas;
 	}
 
-	public PymeEmpresa(long empId, PymeDtipos pymeDtipos, String empNombre, String empNombreImpreso, byte empIdJuridico,
+	public PymeEmpresa(long empId, String empNombre, String empNombreImpreso, byte empIdJuridico,
 			String empNombreRepresentante, String empDireccion, String empTelefono1, String empTelefono2, String empFax,
-			String empEmail, String empRutaLogo, String empCreadoPor, Date creadoEl, BigDecimal empImpuestoVentas,
-			Set<PymeProyecto> pymeProyectos, Set<PymeSysUsers> pymeSysUserses) {
+			String empEmail, String empRutaLogo, String empCreadoPor, Date creadoEl, long empEstado,
+			BigDecimal empImpuestoVentas, Set<PymeProyecto> pymeProyectos, Set<PymeSysUsers> pymeSysUserses) {
 		this.empId = empId;
-		this.pymeDtipos = pymeDtipos;
 		this.empNombre = empNombre;
 		this.empNombreImpreso = empNombreImpreso;
 		this.empIdJuridico = empIdJuridico;
@@ -74,6 +71,7 @@ public class PymeEmpresa implements java.io.Serializable {
 		this.empRutaLogo = empRutaLogo;
 		this.empCreadoPor = empCreadoPor;
 		this.creadoEl = creadoEl;
+		this.empEstado = empEstado;
 		this.empImpuestoVentas = empImpuestoVentas;
 		this.pymeProyectos = pymeProyectos;
 		this.pymeSysUserses = pymeSysUserses;
@@ -88,16 +86,6 @@ public class PymeEmpresa implements java.io.Serializable {
 
 	public void setEmpId(long empId) {
 		this.empId = empId;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "EMP_ESTADO", nullable = false)
-	public PymeDtipos getPymeDtipos() {
-		return this.pymeDtipos;
-	}
-
-	public void setPymeDtipos(PymeDtipos pymeDtipos) {
-		this.pymeDtipos = pymeDtipos;
 	}
 
 	@Column(name = "EMP_NOMBRE", nullable = false, length = 250)
@@ -207,6 +195,15 @@ public class PymeEmpresa implements java.io.Serializable {
 
 	public void setCreadoEl(Date creadoEl) {
 		this.creadoEl = creadoEl;
+	}
+
+	@Column(name = "EMP_ESTADO", nullable = false, precision = 10, scale = 0)
+	public long getEmpEstado() {
+		return this.empEstado;
+	}
+
+	public void setEmpEstado(long empEstado) {
+		this.empEstado = empEstado;
 	}
 
 	@Column(name = "EMP_IMPUESTO_VENTAS", nullable = false, precision = 10)

@@ -1,14 +1,10 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,7 +20,6 @@ public class PymeMtipos implements java.io.Serializable {
 	private long mtipoId;
 	private String mtipoNombre;
 	private Date mtipoCreadoEl;
-	private Set<PymeDtipos> pymeDtiposes = new HashSet<PymeDtipos>(0);
 
 	public PymeMtipos() {
 	}
@@ -33,13 +28,6 @@ public class PymeMtipos implements java.io.Serializable {
 		this.mtipoId = mtipoId;
 		this.mtipoNombre = mtipoNombre;
 		this.mtipoCreadoEl = mtipoCreadoEl;
-	}
-
-	public PymeMtipos(long mtipoId, String mtipoNombre, Date mtipoCreadoEl, Set<PymeDtipos> pymeDtiposes) {
-		this.mtipoId = mtipoId;
-		this.mtipoNombre = mtipoNombre;
-		this.mtipoCreadoEl = mtipoCreadoEl;
-		this.pymeDtiposes = pymeDtiposes;
 	}
 
 	@Id
@@ -70,15 +58,6 @@ public class PymeMtipos implements java.io.Serializable {
 
 	public void setMtipoCreadoEl(Date mtipoCreadoEl) {
 		this.mtipoCreadoEl = mtipoCreadoEl;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeMtipos")
-	public Set<PymeDtipos> getPymeDtiposes() {
-		return this.pymeDtiposes;
-	}
-
-	public void setPymeDtiposes(Set<PymeDtipos> pymeDtiposes) {
-		this.pymeDtiposes = pymeDtiposes;
 	}
 
 }

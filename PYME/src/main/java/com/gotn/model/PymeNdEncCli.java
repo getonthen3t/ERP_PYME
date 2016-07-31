@@ -1,5 +1,5 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -24,10 +24,8 @@ import javax.persistence.TemporalType;
 public class PymeNdEncCli implements java.io.Serializable {
 
 	private long ndcliId;
-	private PymeDtipos pymeDtiposByNdcliEstado;
-	private PymeDtipos pymeDtiposByNdcliTipoFacnd;
+	private PymeSocios pymeSocios;
 	private long ndcliConsectivo;
-	private BigDecimal idSoc;
 	private String ndcliSocNombre;
 	private BigDecimal ndcliTotalLocal;
 	private BigDecimal ndcliTotalExtranjero;
@@ -36,32 +34,31 @@ public class PymeNdEncCli implements java.io.Serializable {
 	private Date ndcliContabilizacion;
 	private Long ndcliDocBase;
 	private Long ndcliDocDestino;
+	private BigDecimal ndcliEstado;
 	private String ndcliComentarios;
 	private BigDecimal proyId;
+	private long ndcliTipoFacnd;
 	private Set<PymeNdDetCli> pymeNdDetClis = new HashSet<PymeNdDetCli>(0);
 
 	public PymeNdEncCli() {
 	}
 
-	public PymeNdEncCli(long ndcliId, PymeDtipos pymeDtiposByNdcliEstado, PymeDtipos pymeDtiposByNdcliTipoFacnd,
-			long ndcliConsectivo, BigDecimal proyId) {
+	public PymeNdEncCli(long ndcliId, long ndcliConsectivo, BigDecimal ndcliEstado, BigDecimal proyId,
+			long ndcliTipoFacnd) {
 		this.ndcliId = ndcliId;
-		this.pymeDtiposByNdcliEstado = pymeDtiposByNdcliEstado;
-		this.pymeDtiposByNdcliTipoFacnd = pymeDtiposByNdcliTipoFacnd;
 		this.ndcliConsectivo = ndcliConsectivo;
+		this.ndcliEstado = ndcliEstado;
 		this.proyId = proyId;
+		this.ndcliTipoFacnd = ndcliTipoFacnd;
 	}
 
-	public PymeNdEncCli(long ndcliId, PymeDtipos pymeDtiposByNdcliEstado, PymeDtipos pymeDtiposByNdcliTipoFacnd,
-			long ndcliConsectivo, BigDecimal idSoc, String ndcliSocNombre, BigDecimal ndcliTotalLocal,
-			BigDecimal ndcliTotalExtranjero, String ndcliTipoCambio, Date ndcliFechaDoc, Date ndcliContabilizacion,
-			Long ndcliDocBase, Long ndcliDocDestino, String ndcliComentarios, BigDecimal proyId,
-			Set<PymeNdDetCli> pymeNdDetClis) {
+	public PymeNdEncCli(long ndcliId, PymeSocios pymeSocios, long ndcliConsectivo, String ndcliSocNombre,
+			BigDecimal ndcliTotalLocal, BigDecimal ndcliTotalExtranjero, String ndcliTipoCambio, Date ndcliFechaDoc,
+			Date ndcliContabilizacion, Long ndcliDocBase, Long ndcliDocDestino, BigDecimal ndcliEstado,
+			String ndcliComentarios, BigDecimal proyId, long ndcliTipoFacnd, Set<PymeNdDetCli> pymeNdDetClis) {
 		this.ndcliId = ndcliId;
-		this.pymeDtiposByNdcliEstado = pymeDtiposByNdcliEstado;
-		this.pymeDtiposByNdcliTipoFacnd = pymeDtiposByNdcliTipoFacnd;
+		this.pymeSocios = pymeSocios;
 		this.ndcliConsectivo = ndcliConsectivo;
-		this.idSoc = idSoc;
 		this.ndcliSocNombre = ndcliSocNombre;
 		this.ndcliTotalLocal = ndcliTotalLocal;
 		this.ndcliTotalExtranjero = ndcliTotalExtranjero;
@@ -70,8 +67,10 @@ public class PymeNdEncCli implements java.io.Serializable {
 		this.ndcliContabilizacion = ndcliContabilizacion;
 		this.ndcliDocBase = ndcliDocBase;
 		this.ndcliDocDestino = ndcliDocDestino;
+		this.ndcliEstado = ndcliEstado;
 		this.ndcliComentarios = ndcliComentarios;
 		this.proyId = proyId;
+		this.ndcliTipoFacnd = ndcliTipoFacnd;
 		this.pymeNdDetClis = pymeNdDetClis;
 	}
 
@@ -87,23 +86,13 @@ public class PymeNdEncCli implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "NDCLI_ESTADO", nullable = false)
-	public PymeDtipos getPymeDtiposByNdcliEstado() {
-		return this.pymeDtiposByNdcliEstado;
+	@JoinColumn(name = "ID_SOC")
+	public PymeSocios getPymeSocios() {
+		return this.pymeSocios;
 	}
 
-	public void setPymeDtiposByNdcliEstado(PymeDtipos pymeDtiposByNdcliEstado) {
-		this.pymeDtiposByNdcliEstado = pymeDtiposByNdcliEstado;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "NDCLI_TIPO_FACND", nullable = false)
-	public PymeDtipos getPymeDtiposByNdcliTipoFacnd() {
-		return this.pymeDtiposByNdcliTipoFacnd;
-	}
-
-	public void setPymeDtiposByNdcliTipoFacnd(PymeDtipos pymeDtiposByNdcliTipoFacnd) {
-		this.pymeDtiposByNdcliTipoFacnd = pymeDtiposByNdcliTipoFacnd;
+	public void setPymeSocios(PymeSocios pymeSocios) {
+		this.pymeSocios = pymeSocios;
 	}
 
 	@Column(name = "NDCLI_CONSECTIVO", nullable = false, precision = 18, scale = 0)
@@ -113,15 +102,6 @@ public class PymeNdEncCli implements java.io.Serializable {
 
 	public void setNdcliConsectivo(long ndcliConsectivo) {
 		this.ndcliConsectivo = ndcliConsectivo;
-	}
-
-	@Column(name = "ID_SOC", precision = 22, scale = 0)
-	public BigDecimal getIdSoc() {
-		return this.idSoc;
-	}
-
-	public void setIdSoc(BigDecimal idSoc) {
-		this.idSoc = idSoc;
 	}
 
 	@Column(name = "NDCLI_SOC_NOMBRE", length = 200)
@@ -198,6 +178,15 @@ public class PymeNdEncCli implements java.io.Serializable {
 		this.ndcliDocDestino = ndcliDocDestino;
 	}
 
+	@Column(name = "NDCLI_ESTADO", nullable = false, precision = 22, scale = 0)
+	public BigDecimal getNdcliEstado() {
+		return this.ndcliEstado;
+	}
+
+	public void setNdcliEstado(BigDecimal ndcliEstado) {
+		this.ndcliEstado = ndcliEstado;
+	}
+
 	@Column(name = "NDCLI_COMENTARIOS", length = 200)
 	public String getNdcliComentarios() {
 		return this.ndcliComentarios;
@@ -214,6 +203,15 @@ public class PymeNdEncCli implements java.io.Serializable {
 
 	public void setProyId(BigDecimal proyId) {
 		this.proyId = proyId;
+	}
+
+	@Column(name = "NDCLI_TIPO_FACND", nullable = false, precision = 10, scale = 0)
+	public long getNdcliTipoFacnd() {
+		return this.ndcliTipoFacnd;
+	}
+
+	public void setNdcliTipoFacnd(long ndcliTipoFacnd) {
+		this.ndcliTipoFacnd = ndcliTipoFacnd;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeNdEncCli")

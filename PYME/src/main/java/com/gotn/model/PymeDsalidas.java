@@ -1,5 +1,5 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,36 +21,36 @@ public class PymeDsalidas implements java.io.Serializable {
 
 	private long dsalId;
 	private PymeProductos pymeProductos;
-	private PymeDtipos pymeDtiposByDsalTipoMov;
 	private PymeMsalidas pymeMsalidas;
-	private PymeDtipos pymeDtiposByDsalEstadoDoc;
+	private long dsalTipoMov;
 	private long dsalCantidad;
 	private Date dsalFechaSalida;
+	private Long dsalEstadoDoc;
 	private String dsalCreadoPor;
 	private String dsalAutorizadoPor;
 
 	public PymeDsalidas() {
 	}
 
-	public PymeDsalidas(long dsalId, PymeProductos pymeProductos, PymeDtipos pymeDtiposByDsalTipoMov,
-			PymeMsalidas pymeMsalidas, long dsalCantidad) {
+	public PymeDsalidas(long dsalId, PymeProductos pymeProductos, PymeMsalidas pymeMsalidas, long dsalTipoMov,
+			long dsalCantidad) {
 		this.dsalId = dsalId;
 		this.pymeProductos = pymeProductos;
-		this.pymeDtiposByDsalTipoMov = pymeDtiposByDsalTipoMov;
 		this.pymeMsalidas = pymeMsalidas;
+		this.dsalTipoMov = dsalTipoMov;
 		this.dsalCantidad = dsalCantidad;
 	}
 
-	public PymeDsalidas(long dsalId, PymeProductos pymeProductos, PymeDtipos pymeDtiposByDsalTipoMov,
-			PymeMsalidas pymeMsalidas, PymeDtipos pymeDtiposByDsalEstadoDoc, long dsalCantidad, Date dsalFechaSalida,
-			String dsalCreadoPor, String dsalAutorizadoPor) {
+	public PymeDsalidas(long dsalId, PymeProductos pymeProductos, PymeMsalidas pymeMsalidas, long dsalTipoMov,
+			long dsalCantidad, Date dsalFechaSalida, Long dsalEstadoDoc, String dsalCreadoPor,
+			String dsalAutorizadoPor) {
 		this.dsalId = dsalId;
 		this.pymeProductos = pymeProductos;
-		this.pymeDtiposByDsalTipoMov = pymeDtiposByDsalTipoMov;
 		this.pymeMsalidas = pymeMsalidas;
-		this.pymeDtiposByDsalEstadoDoc = pymeDtiposByDsalEstadoDoc;
+		this.dsalTipoMov = dsalTipoMov;
 		this.dsalCantidad = dsalCantidad;
 		this.dsalFechaSalida = dsalFechaSalida;
+		this.dsalEstadoDoc = dsalEstadoDoc;
 		this.dsalCreadoPor = dsalCreadoPor;
 		this.dsalAutorizadoPor = dsalAutorizadoPor;
 	}
@@ -77,16 +77,6 @@ public class PymeDsalidas implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "DSAL_TIPO_MOV", nullable = false)
-	public PymeDtipos getPymeDtiposByDsalTipoMov() {
-		return this.pymeDtiposByDsalTipoMov;
-	}
-
-	public void setPymeDtiposByDsalTipoMov(PymeDtipos pymeDtiposByDsalTipoMov) {
-		this.pymeDtiposByDsalTipoMov = pymeDtiposByDsalTipoMov;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MSAL_ID", nullable = false)
 	public PymeMsalidas getPymeMsalidas() {
 		return this.pymeMsalidas;
@@ -96,14 +86,13 @@ public class PymeDsalidas implements java.io.Serializable {
 		this.pymeMsalidas = pymeMsalidas;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "DSAL_ESTADO_DOC")
-	public PymeDtipos getPymeDtiposByDsalEstadoDoc() {
-		return this.pymeDtiposByDsalEstadoDoc;
+	@Column(name = "DSAL_TIPO_MOV", nullable = false, precision = 10, scale = 0)
+	public long getDsalTipoMov() {
+		return this.dsalTipoMov;
 	}
 
-	public void setPymeDtiposByDsalEstadoDoc(PymeDtipos pymeDtiposByDsalEstadoDoc) {
-		this.pymeDtiposByDsalEstadoDoc = pymeDtiposByDsalEstadoDoc;
+	public void setDsalTipoMov(long dsalTipoMov) {
+		this.dsalTipoMov = dsalTipoMov;
 	}
 
 	@Column(name = "DSAL_CANTIDAD", nullable = false, precision = 10, scale = 0)
@@ -123,6 +112,15 @@ public class PymeDsalidas implements java.io.Serializable {
 
 	public void setDsalFechaSalida(Date dsalFechaSalida) {
 		this.dsalFechaSalida = dsalFechaSalida;
+	}
+
+	@Column(name = "DSAL_ESTADO_DOC", precision = 10, scale = 0)
+	public Long getDsalEstadoDoc() {
+		return this.dsalEstadoDoc;
+	}
+
+	public void setDsalEstadoDoc(Long dsalEstadoDoc) {
+		this.dsalEstadoDoc = dsalEstadoDoc;
 	}
 
 	@Column(name = "DSAL_CREADO_POR", length = 50)

@@ -1,5 +1,5 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -24,11 +24,8 @@ import javax.persistence.TemporalType;
 public class PymeFacncEncProv implements java.io.Serializable {
 
 	private long facprovId;
-	private PymeDtipos pymeDtiposByFacprovTipoFacnd;
-	private PymeDtipos pymeDtiposByFacprovEstado;
-	private PymeDtipos pymeDtiposByFacprovTipoDoc;
+	private PymeSocios pymeSocios;
 	private long facprovConsectivo;
-	private BigDecimal idSoc;
 	private String facprovSocNombre;
 	private BigDecimal facprovTotalLocal;
 	private BigDecimal facprovTotalExtranjero;
@@ -37,36 +34,34 @@ public class PymeFacncEncProv implements java.io.Serializable {
 	private Date facprovContabilizacion;
 	private Long facprovDocBase;
 	private Long facprovDocDestino;
+	private long facprovTipoDoc;
+	private BigDecimal facprovEstado;
 	private String facprovComentarios;
 	private BigDecimal proyId;
+	private long facprovTipoFacnd;
 	private Set<PymeFacncDetProv> pymeFacncDetProvs = new HashSet<PymeFacncDetProv>(0);
 
 	public PymeFacncEncProv() {
 	}
 
-	public PymeFacncEncProv(long facprovId, PymeDtipos pymeDtiposByFacprovTipoFacnd,
-			PymeDtipos pymeDtiposByFacprovEstado, PymeDtipos pymeDtiposByFacprovTipoDoc, long facprovConsectivo,
-			BigDecimal proyId) {
+	public PymeFacncEncProv(long facprovId, long facprovConsectivo, long facprovTipoDoc, BigDecimal facprovEstado,
+			BigDecimal proyId, long facprovTipoFacnd) {
 		this.facprovId = facprovId;
-		this.pymeDtiposByFacprovTipoFacnd = pymeDtiposByFacprovTipoFacnd;
-		this.pymeDtiposByFacprovEstado = pymeDtiposByFacprovEstado;
-		this.pymeDtiposByFacprovTipoDoc = pymeDtiposByFacprovTipoDoc;
 		this.facprovConsectivo = facprovConsectivo;
+		this.facprovTipoDoc = facprovTipoDoc;
+		this.facprovEstado = facprovEstado;
 		this.proyId = proyId;
+		this.facprovTipoFacnd = facprovTipoFacnd;
 	}
 
-	public PymeFacncEncProv(long facprovId, PymeDtipos pymeDtiposByFacprovTipoFacnd,
-			PymeDtipos pymeDtiposByFacprovEstado, PymeDtipos pymeDtiposByFacprovTipoDoc, long facprovConsectivo,
-			BigDecimal idSoc, String facprovSocNombre, BigDecimal facprovTotalLocal, BigDecimal facprovTotalExtranjero,
-			String facprovTipoCambio, Date facprovFechaDoc, Date facprovContabilizacion, Long facprovDocBase,
-			Long facprovDocDestino, String facprovComentarios, BigDecimal proyId,
-			Set<PymeFacncDetProv> pymeFacncDetProvs) {
+	public PymeFacncEncProv(long facprovId, PymeSocios pymeSocios, long facprovConsectivo, String facprovSocNombre,
+			BigDecimal facprovTotalLocal, BigDecimal facprovTotalExtranjero, String facprovTipoCambio,
+			Date facprovFechaDoc, Date facprovContabilizacion, Long facprovDocBase, Long facprovDocDestino,
+			long facprovTipoDoc, BigDecimal facprovEstado, String facprovComentarios, BigDecimal proyId,
+			long facprovTipoFacnd, Set<PymeFacncDetProv> pymeFacncDetProvs) {
 		this.facprovId = facprovId;
-		this.pymeDtiposByFacprovTipoFacnd = pymeDtiposByFacprovTipoFacnd;
-		this.pymeDtiposByFacprovEstado = pymeDtiposByFacprovEstado;
-		this.pymeDtiposByFacprovTipoDoc = pymeDtiposByFacprovTipoDoc;
+		this.pymeSocios = pymeSocios;
 		this.facprovConsectivo = facprovConsectivo;
-		this.idSoc = idSoc;
 		this.facprovSocNombre = facprovSocNombre;
 		this.facprovTotalLocal = facprovTotalLocal;
 		this.facprovTotalExtranjero = facprovTotalExtranjero;
@@ -75,8 +70,11 @@ public class PymeFacncEncProv implements java.io.Serializable {
 		this.facprovContabilizacion = facprovContabilizacion;
 		this.facprovDocBase = facprovDocBase;
 		this.facprovDocDestino = facprovDocDestino;
+		this.facprovTipoDoc = facprovTipoDoc;
+		this.facprovEstado = facprovEstado;
 		this.facprovComentarios = facprovComentarios;
 		this.proyId = proyId;
+		this.facprovTipoFacnd = facprovTipoFacnd;
 		this.pymeFacncDetProvs = pymeFacncDetProvs;
 	}
 
@@ -92,33 +90,13 @@ public class PymeFacncEncProv implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "FACPROV_TIPO_FACND", nullable = false)
-	public PymeDtipos getPymeDtiposByFacprovTipoFacnd() {
-		return this.pymeDtiposByFacprovTipoFacnd;
+	@JoinColumn(name = "ID_SOC")
+	public PymeSocios getPymeSocios() {
+		return this.pymeSocios;
 	}
 
-	public void setPymeDtiposByFacprovTipoFacnd(PymeDtipos pymeDtiposByFacprovTipoFacnd) {
-		this.pymeDtiposByFacprovTipoFacnd = pymeDtiposByFacprovTipoFacnd;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "FACPROV_ESTADO", nullable = false)
-	public PymeDtipos getPymeDtiposByFacprovEstado() {
-		return this.pymeDtiposByFacprovEstado;
-	}
-
-	public void setPymeDtiposByFacprovEstado(PymeDtipos pymeDtiposByFacprovEstado) {
-		this.pymeDtiposByFacprovEstado = pymeDtiposByFacprovEstado;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "FACPROV_TIPO_DOC", nullable = false)
-	public PymeDtipos getPymeDtiposByFacprovTipoDoc() {
-		return this.pymeDtiposByFacprovTipoDoc;
-	}
-
-	public void setPymeDtiposByFacprovTipoDoc(PymeDtipos pymeDtiposByFacprovTipoDoc) {
-		this.pymeDtiposByFacprovTipoDoc = pymeDtiposByFacprovTipoDoc;
+	public void setPymeSocios(PymeSocios pymeSocios) {
+		this.pymeSocios = pymeSocios;
 	}
 
 	@Column(name = "FACPROV_CONSECTIVO", nullable = false, precision = 18, scale = 0)
@@ -128,15 +106,6 @@ public class PymeFacncEncProv implements java.io.Serializable {
 
 	public void setFacprovConsectivo(long facprovConsectivo) {
 		this.facprovConsectivo = facprovConsectivo;
-	}
-
-	@Column(name = "ID_SOC", precision = 22, scale = 0)
-	public BigDecimal getIdSoc() {
-		return this.idSoc;
-	}
-
-	public void setIdSoc(BigDecimal idSoc) {
-		this.idSoc = idSoc;
 	}
 
 	@Column(name = "FACPROV_SOC_NOMBRE", length = 200)
@@ -213,6 +182,24 @@ public class PymeFacncEncProv implements java.io.Serializable {
 		this.facprovDocDestino = facprovDocDestino;
 	}
 
+	@Column(name = "FACPROV_TIPO_DOC", nullable = false, precision = 10, scale = 0)
+	public long getFacprovTipoDoc() {
+		return this.facprovTipoDoc;
+	}
+
+	public void setFacprovTipoDoc(long facprovTipoDoc) {
+		this.facprovTipoDoc = facprovTipoDoc;
+	}
+
+	@Column(name = "FACPROV_ESTADO", nullable = false, precision = 22, scale = 0)
+	public BigDecimal getFacprovEstado() {
+		return this.facprovEstado;
+	}
+
+	public void setFacprovEstado(BigDecimal facprovEstado) {
+		this.facprovEstado = facprovEstado;
+	}
+
 	@Column(name = "FACPROV_COMENTARIOS", length = 200)
 	public String getFacprovComentarios() {
 		return this.facprovComentarios;
@@ -229,6 +216,15 @@ public class PymeFacncEncProv implements java.io.Serializable {
 
 	public void setProyId(BigDecimal proyId) {
 		this.proyId = proyId;
+	}
+
+	@Column(name = "FACPROV_TIPO_FACND", nullable = false, precision = 10, scale = 0)
+	public long getFacprovTipoFacnd() {
+		return this.facprovTipoFacnd;
+	}
+
+	public void setFacprovTipoFacnd(long facprovTipoFacnd) {
+		this.facprovTipoFacnd = facprovTipoFacnd;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeFacncEncProv")

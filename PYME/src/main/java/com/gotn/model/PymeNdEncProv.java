@@ -1,5 +1,5 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,8 +22,6 @@ import javax.persistence.TemporalType;
 public class PymeNdEncProv implements java.io.Serializable {
 
 	private long ndprovId;
-	private PymeDtipos pymeDtiposByNdprovEstado;
-	private PymeDtipos pymeDtiposByNdprovTipoFacnd;
 	private long ndprovConsectivo;
 	private BigDecimal idSoc;
 	private String ndprovSocNombre;
@@ -36,30 +32,29 @@ public class PymeNdEncProv implements java.io.Serializable {
 	private Date ndprovContabilizacion;
 	private Long ndprovDocBase;
 	private Long ndprovDocDestino;
+	private BigDecimal ndprovEstado;
 	private String ndprovComentarios;
 	private BigDecimal proyId;
+	private long ndprovTipoFacnd;
 	private Set<PymeNdDetProv> pymeNdDetProvs = new HashSet<PymeNdDetProv>(0);
 
 	public PymeNdEncProv() {
 	}
 
-	public PymeNdEncProv(long ndprovId, PymeDtipos pymeDtiposByNdprovEstado, PymeDtipos pymeDtiposByNdprovTipoFacnd,
-			long ndprovConsectivo, BigDecimal proyId) {
+	public PymeNdEncProv(long ndprovId, long ndprovConsectivo, BigDecimal ndprovEstado, BigDecimal proyId,
+			long ndprovTipoFacnd) {
 		this.ndprovId = ndprovId;
-		this.pymeDtiposByNdprovEstado = pymeDtiposByNdprovEstado;
-		this.pymeDtiposByNdprovTipoFacnd = pymeDtiposByNdprovTipoFacnd;
 		this.ndprovConsectivo = ndprovConsectivo;
+		this.ndprovEstado = ndprovEstado;
 		this.proyId = proyId;
+		this.ndprovTipoFacnd = ndprovTipoFacnd;
 	}
 
-	public PymeNdEncProv(long ndprovId, PymeDtipos pymeDtiposByNdprovEstado, PymeDtipos pymeDtiposByNdprovTipoFacnd,
-			long ndprovConsectivo, BigDecimal idSoc, String ndprovSocNombre, BigDecimal ndprovTotalLocal,
-			BigDecimal ndprovTotalExtranjero, String ndprovTipoCambio, Date ndprovFechaDoc, Date ndprovContabilizacion,
-			Long ndprovDocBase, Long ndprovDocDestino, String ndprovComentarios, BigDecimal proyId,
-			Set<PymeNdDetProv> pymeNdDetProvs) {
+	public PymeNdEncProv(long ndprovId, long ndprovConsectivo, BigDecimal idSoc, String ndprovSocNombre,
+			BigDecimal ndprovTotalLocal, BigDecimal ndprovTotalExtranjero, String ndprovTipoCambio, Date ndprovFechaDoc,
+			Date ndprovContabilizacion, Long ndprovDocBase, Long ndprovDocDestino, BigDecimal ndprovEstado,
+			String ndprovComentarios, BigDecimal proyId, long ndprovTipoFacnd, Set<PymeNdDetProv> pymeNdDetProvs) {
 		this.ndprovId = ndprovId;
-		this.pymeDtiposByNdprovEstado = pymeDtiposByNdprovEstado;
-		this.pymeDtiposByNdprovTipoFacnd = pymeDtiposByNdprovTipoFacnd;
 		this.ndprovConsectivo = ndprovConsectivo;
 		this.idSoc = idSoc;
 		this.ndprovSocNombre = ndprovSocNombre;
@@ -70,8 +65,10 @@ public class PymeNdEncProv implements java.io.Serializable {
 		this.ndprovContabilizacion = ndprovContabilizacion;
 		this.ndprovDocBase = ndprovDocBase;
 		this.ndprovDocDestino = ndprovDocDestino;
+		this.ndprovEstado = ndprovEstado;
 		this.ndprovComentarios = ndprovComentarios;
 		this.proyId = proyId;
+		this.ndprovTipoFacnd = ndprovTipoFacnd;
 		this.pymeNdDetProvs = pymeNdDetProvs;
 	}
 
@@ -84,26 +81,6 @@ public class PymeNdEncProv implements java.io.Serializable {
 
 	public void setNdprovId(long ndprovId) {
 		this.ndprovId = ndprovId;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "NDPROV_ESTADO", nullable = false)
-	public PymeDtipos getPymeDtiposByNdprovEstado() {
-		return this.pymeDtiposByNdprovEstado;
-	}
-
-	public void setPymeDtiposByNdprovEstado(PymeDtipos pymeDtiposByNdprovEstado) {
-		this.pymeDtiposByNdprovEstado = pymeDtiposByNdprovEstado;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "NDPROV_TIPO_FACND", nullable = false)
-	public PymeDtipos getPymeDtiposByNdprovTipoFacnd() {
-		return this.pymeDtiposByNdprovTipoFacnd;
-	}
-
-	public void setPymeDtiposByNdprovTipoFacnd(PymeDtipos pymeDtiposByNdprovTipoFacnd) {
-		this.pymeDtiposByNdprovTipoFacnd = pymeDtiposByNdprovTipoFacnd;
 	}
 
 	@Column(name = "NDPROV_CONSECTIVO", nullable = false, precision = 18, scale = 0)
@@ -198,6 +175,15 @@ public class PymeNdEncProv implements java.io.Serializable {
 		this.ndprovDocDestino = ndprovDocDestino;
 	}
 
+	@Column(name = "NDPROV_ESTADO", nullable = false, precision = 22, scale = 0)
+	public BigDecimal getNdprovEstado() {
+		return this.ndprovEstado;
+	}
+
+	public void setNdprovEstado(BigDecimal ndprovEstado) {
+		this.ndprovEstado = ndprovEstado;
+	}
+
 	@Column(name = "NDPROV_COMENTARIOS", length = 200)
 	public String getNdprovComentarios() {
 		return this.ndprovComentarios;
@@ -214,6 +200,15 @@ public class PymeNdEncProv implements java.io.Serializable {
 
 	public void setProyId(BigDecimal proyId) {
 		this.proyId = proyId;
+	}
+
+	@Column(name = "NDPROV_TIPO_FACND", nullable = false, precision = 10, scale = 0)
+	public long getNdprovTipoFacnd() {
+		return this.ndprovTipoFacnd;
+	}
+
+	public void setNdprovTipoFacnd(long ndprovTipoFacnd) {
+		this.ndprovTipoFacnd = ndprovTipoFacnd;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeNdEncProv")

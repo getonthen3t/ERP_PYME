@@ -1,5 +1,5 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -24,14 +24,14 @@ import javax.persistence.TemporalType;
 public class PymeProductos implements java.io.Serializable {
 
 	private long producId;
-	private PymeDtipos pymeDtiposByProducMedida;
-	private PymeDtipos pymeDtiposByProducEstado;
 	private PymeMlistaPrecios pymeMlistaPrecios;
-	private PymeDtipos pymeDtiposByProducTipo;
 	private String producIdAlterno;
 	private String producDescripcion;
 	private long etaId;
+	private long producEstado;
+	private Long producMedida;
 	private BigDecimal producPeso;
+	private Long producTipo;
 	private long producExistencia;
 	private Long producReservado;
 	private Long producDisponible;
@@ -47,32 +47,32 @@ public class PymeProductos implements java.io.Serializable {
 	public PymeProductos() {
 	}
 
-	public PymeProductos(long producId, PymeDtipos pymeDtiposByProducEstado, PymeMlistaPrecios pymeMlistaPrecios,
-			String producIdAlterno, String producDescripcion, long etaId, long producExistencia) {
+	public PymeProductos(long producId, PymeMlistaPrecios pymeMlistaPrecios, String producIdAlterno,
+			String producDescripcion, long etaId, long producEstado, long producExistencia) {
 		this.producId = producId;
-		this.pymeDtiposByProducEstado = pymeDtiposByProducEstado;
 		this.pymeMlistaPrecios = pymeMlistaPrecios;
 		this.producIdAlterno = producIdAlterno;
 		this.producDescripcion = producDescripcion;
 		this.etaId = etaId;
+		this.producEstado = producEstado;
 		this.producExistencia = producExistencia;
 	}
 
-	public PymeProductos(long producId, PymeDtipos pymeDtiposByProducMedida, PymeDtipos pymeDtiposByProducEstado,
-			PymeMlistaPrecios pymeMlistaPrecios, PymeDtipos pymeDtiposByProducTipo, String producIdAlterno,
-			String producDescripcion, long etaId, BigDecimal producPeso, long producExistencia, Long producReservado,
-			Long producDisponible, Date producCreadoEl, String producCreadoPor, Set<PymeDentradas> pymeDentradases,
-			Set<PymeFacncDetProv> pymeFacncDetProvs, Set<PymeDsalidas> pymeDsalidases,
-			Set<PymeFacncDetCli> pymeFacncDetClis, Set<PymeNdDetCli> pymeNdDetClis, Set<PymeNdDetProv> pymeNdDetProvs) {
+	public PymeProductos(long producId, PymeMlistaPrecios pymeMlistaPrecios, String producIdAlterno,
+			String producDescripcion, long etaId, long producEstado, Long producMedida, BigDecimal producPeso,
+			Long producTipo, long producExistencia, Long producReservado, Long producDisponible, Date producCreadoEl,
+			String producCreadoPor, Set<PymeDentradas> pymeDentradases, Set<PymeFacncDetProv> pymeFacncDetProvs,
+			Set<PymeDsalidas> pymeDsalidases, Set<PymeFacncDetCli> pymeFacncDetClis, Set<PymeNdDetCli> pymeNdDetClis,
+			Set<PymeNdDetProv> pymeNdDetProvs) {
 		this.producId = producId;
-		this.pymeDtiposByProducMedida = pymeDtiposByProducMedida;
-		this.pymeDtiposByProducEstado = pymeDtiposByProducEstado;
 		this.pymeMlistaPrecios = pymeMlistaPrecios;
-		this.pymeDtiposByProducTipo = pymeDtiposByProducTipo;
 		this.producIdAlterno = producIdAlterno;
 		this.producDescripcion = producDescripcion;
 		this.etaId = etaId;
+		this.producEstado = producEstado;
+		this.producMedida = producMedida;
 		this.producPeso = producPeso;
+		this.producTipo = producTipo;
 		this.producExistencia = producExistencia;
 		this.producReservado = producReservado;
 		this.producDisponible = producDisponible;
@@ -98,26 +98,6 @@ public class PymeProductos implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "PRODUC_MEDIDA")
-	public PymeDtipos getPymeDtiposByProducMedida() {
-		return this.pymeDtiposByProducMedida;
-	}
-
-	public void setPymeDtiposByProducMedida(PymeDtipos pymeDtiposByProducMedida) {
-		this.pymeDtiposByProducMedida = pymeDtiposByProducMedida;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "PRODUC_ESTADO", nullable = false)
-	public PymeDtipos getPymeDtiposByProducEstado() {
-		return this.pymeDtiposByProducEstado;
-	}
-
-	public void setPymeDtiposByProducEstado(PymeDtipos pymeDtiposByProducEstado) {
-		this.pymeDtiposByProducEstado = pymeDtiposByProducEstado;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MLIST_ID", nullable = false)
 	public PymeMlistaPrecios getPymeMlistaPrecios() {
 		return this.pymeMlistaPrecios;
@@ -125,16 +105,6 @@ public class PymeProductos implements java.io.Serializable {
 
 	public void setPymeMlistaPrecios(PymeMlistaPrecios pymeMlistaPrecios) {
 		this.pymeMlistaPrecios = pymeMlistaPrecios;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "PRODUC_TIPO")
-	public PymeDtipos getPymeDtiposByProducTipo() {
-		return this.pymeDtiposByProducTipo;
-	}
-
-	public void setPymeDtiposByProducTipo(PymeDtipos pymeDtiposByProducTipo) {
-		this.pymeDtiposByProducTipo = pymeDtiposByProducTipo;
 	}
 
 	@Column(name = "PRODUC_ID_ALTERNO", nullable = false, length = 200)
@@ -164,6 +134,24 @@ public class PymeProductos implements java.io.Serializable {
 		this.etaId = etaId;
 	}
 
+	@Column(name = "PRODUC_ESTADO", nullable = false, precision = 10, scale = 0)
+	public long getProducEstado() {
+		return this.producEstado;
+	}
+
+	public void setProducEstado(long producEstado) {
+		this.producEstado = producEstado;
+	}
+
+	@Column(name = "PRODUC_MEDIDA", precision = 10, scale = 0)
+	public Long getProducMedida() {
+		return this.producMedida;
+	}
+
+	public void setProducMedida(Long producMedida) {
+		this.producMedida = producMedida;
+	}
+
 	@Column(name = "PRODUC_PESO", precision = 18, scale = 3)
 	public BigDecimal getProducPeso() {
 		return this.producPeso;
@@ -171,6 +159,15 @@ public class PymeProductos implements java.io.Serializable {
 
 	public void setProducPeso(BigDecimal producPeso) {
 		this.producPeso = producPeso;
+	}
+
+	@Column(name = "PRODUC_TIPO", precision = 10, scale = 0)
+	public Long getProducTipo() {
+		return this.producTipo;
+	}
+
+	public void setProducTipo(Long producTipo) {
+		this.producTipo = producTipo;
 	}
 
 	@Column(name = "PRODUC_EXISTENCIA", nullable = false, precision = 18, scale = 0)

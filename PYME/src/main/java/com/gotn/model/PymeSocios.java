@@ -1,14 +1,15 @@
 package com.gotn.model;
-// Generated Jul 27, 2016 9:16:01 PM by Hibernate Tools 4.0.1.Final
+// Generated Jul 30, 2016 2:59:38 PM by Hibernate Tools 4.0.1.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,49 +23,53 @@ import javax.persistence.UniqueConstraint;
 public class PymeSocios implements java.io.Serializable {
 
 	private BigDecimal socId;
-	private PymeDtipos pymeDtiposBySocTipoSocio;
-	private PymeDtipos pymeDtiposBySocTipoPlazo;
-	private PymeDtipos pymeDtiposBySocTipoCredito;
-	private PymeDtipos pymeDtiposBySocGrupoClientes;
 	private String socExterno;
 	private String socNombre;
 	private String socApellido1;
 	private String socApellido2;
 	private String socDireccion1;
 	private String socDireccion2;
+	private long socTipoCredito;
+	private Long socGrupoClientes;
+	private Long socTipoPlazo;
+	private long socTipoSocio;
 	private String socCreadoPor;
 	private Date socCreadoEl;
+	private Set<PymeNdEncCli> pymeNdEncClis = new HashSet<PymeNdEncCli>(0);
+	private Set<PymeFacncEncProv> pymeFacncEncProvs = new HashSet<PymeFacncEncProv>(0);
 
 	public PymeSocios() {
 	}
 
-	public PymeSocios(BigDecimal socId, PymeDtipos pymeDtiposBySocTipoSocio, PymeDtipos pymeDtiposBySocTipoCredito,
-			String socExterno, String socNombre, String socApellido1) {
+	public PymeSocios(BigDecimal socId, String socExterno, String socNombre, String socApellido1, long socTipoCredito,
+			long socTipoSocio) {
 		this.socId = socId;
-		this.pymeDtiposBySocTipoSocio = pymeDtiposBySocTipoSocio;
-		this.pymeDtiposBySocTipoCredito = pymeDtiposBySocTipoCredito;
 		this.socExterno = socExterno;
 		this.socNombre = socNombre;
 		this.socApellido1 = socApellido1;
+		this.socTipoCredito = socTipoCredito;
+		this.socTipoSocio = socTipoSocio;
 	}
 
-	public PymeSocios(BigDecimal socId, PymeDtipos pymeDtiposBySocTipoSocio, PymeDtipos pymeDtiposBySocTipoPlazo,
-			PymeDtipos pymeDtiposBySocTipoCredito, PymeDtipos pymeDtiposBySocGrupoClientes, String socExterno,
-			String socNombre, String socApellido1, String socApellido2, String socDireccion1, String socDireccion2,
-			String socCreadoPor, Date socCreadoEl) {
+	public PymeSocios(BigDecimal socId, String socExterno, String socNombre, String socApellido1, String socApellido2,
+			String socDireccion1, String socDireccion2, long socTipoCredito, Long socGrupoClientes, Long socTipoPlazo,
+			long socTipoSocio, String socCreadoPor, Date socCreadoEl, Set<PymeNdEncCli> pymeNdEncClis,
+			Set<PymeFacncEncProv> pymeFacncEncProvs) {
 		this.socId = socId;
-		this.pymeDtiposBySocTipoSocio = pymeDtiposBySocTipoSocio;
-		this.pymeDtiposBySocTipoPlazo = pymeDtiposBySocTipoPlazo;
-		this.pymeDtiposBySocTipoCredito = pymeDtiposBySocTipoCredito;
-		this.pymeDtiposBySocGrupoClientes = pymeDtiposBySocGrupoClientes;
 		this.socExterno = socExterno;
 		this.socNombre = socNombre;
 		this.socApellido1 = socApellido1;
 		this.socApellido2 = socApellido2;
 		this.socDireccion1 = socDireccion1;
 		this.socDireccion2 = socDireccion2;
+		this.socTipoCredito = socTipoCredito;
+		this.socGrupoClientes = socGrupoClientes;
+		this.socTipoPlazo = socTipoPlazo;
+		this.socTipoSocio = socTipoSocio;
 		this.socCreadoPor = socCreadoPor;
 		this.socCreadoEl = socCreadoEl;
+		this.pymeNdEncClis = pymeNdEncClis;
+		this.pymeFacncEncProvs = pymeFacncEncProvs;
 	}
 
 	@Id
@@ -76,46 +81,6 @@ public class PymeSocios implements java.io.Serializable {
 
 	public void setSocId(BigDecimal socId) {
 		this.socId = socId;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "SOC_TIPO_SOCIO", nullable = false)
-	public PymeDtipos getPymeDtiposBySocTipoSocio() {
-		return this.pymeDtiposBySocTipoSocio;
-	}
-
-	public void setPymeDtiposBySocTipoSocio(PymeDtipos pymeDtiposBySocTipoSocio) {
-		this.pymeDtiposBySocTipoSocio = pymeDtiposBySocTipoSocio;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "SOC_TIPO_PLAZO")
-	public PymeDtipos getPymeDtiposBySocTipoPlazo() {
-		return this.pymeDtiposBySocTipoPlazo;
-	}
-
-	public void setPymeDtiposBySocTipoPlazo(PymeDtipos pymeDtiposBySocTipoPlazo) {
-		this.pymeDtiposBySocTipoPlazo = pymeDtiposBySocTipoPlazo;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "SOC_TIPO_CREDITO", nullable = false)
-	public PymeDtipos getPymeDtiposBySocTipoCredito() {
-		return this.pymeDtiposBySocTipoCredito;
-	}
-
-	public void setPymeDtiposBySocTipoCredito(PymeDtipos pymeDtiposBySocTipoCredito) {
-		this.pymeDtiposBySocTipoCredito = pymeDtiposBySocTipoCredito;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "SOC_GRUPO_CLIENTES")
-	public PymeDtipos getPymeDtiposBySocGrupoClientes() {
-		return this.pymeDtiposBySocGrupoClientes;
-	}
-
-	public void setPymeDtiposBySocGrupoClientes(PymeDtipos pymeDtiposBySocGrupoClientes) {
-		this.pymeDtiposBySocGrupoClientes = pymeDtiposBySocGrupoClientes;
 	}
 
 	@Column(name = "SOC_EXTERNO", unique = true, nullable = false, length = 50)
@@ -172,6 +137,42 @@ public class PymeSocios implements java.io.Serializable {
 		this.socDireccion2 = socDireccion2;
 	}
 
+	@Column(name = "SOC_TIPO_CREDITO", nullable = false, precision = 10, scale = 0)
+	public long getSocTipoCredito() {
+		return this.socTipoCredito;
+	}
+
+	public void setSocTipoCredito(long socTipoCredito) {
+		this.socTipoCredito = socTipoCredito;
+	}
+
+	@Column(name = "SOC_GRUPO_CLIENTES", precision = 10, scale = 0)
+	public Long getSocGrupoClientes() {
+		return this.socGrupoClientes;
+	}
+
+	public void setSocGrupoClientes(Long socGrupoClientes) {
+		this.socGrupoClientes = socGrupoClientes;
+	}
+
+	@Column(name = "SOC_TIPO_PLAZO", precision = 10, scale = 0)
+	public Long getSocTipoPlazo() {
+		return this.socTipoPlazo;
+	}
+
+	public void setSocTipoPlazo(Long socTipoPlazo) {
+		this.socTipoPlazo = socTipoPlazo;
+	}
+
+	@Column(name = "SOC_TIPO_SOCIO", nullable = false, precision = 10, scale = 0)
+	public long getSocTipoSocio() {
+		return this.socTipoSocio;
+	}
+
+	public void setSocTipoSocio(long socTipoSocio) {
+		this.socTipoSocio = socTipoSocio;
+	}
+
 	@Column(name = "SOC_CREADO_POR", length = 20)
 	public String getSocCreadoPor() {
 		return this.socCreadoPor;
@@ -189,6 +190,24 @@ public class PymeSocios implements java.io.Serializable {
 
 	public void setSocCreadoEl(Date socCreadoEl) {
 		this.socCreadoEl = socCreadoEl;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeSocios")
+	public Set<PymeNdEncCli> getPymeNdEncClis() {
+		return this.pymeNdEncClis;
+	}
+
+	public void setPymeNdEncClis(Set<PymeNdEncCli> pymeNdEncClis) {
+		this.pymeNdEncClis = pymeNdEncClis;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pymeSocios")
+	public Set<PymeFacncEncProv> getPymeFacncEncProvs() {
+		return this.pymeFacncEncProvs;
+	}
+
+	public void setPymeFacncEncProvs(Set<PymeFacncEncProv> pymeFacncEncProvs) {
+		this.pymeFacncEncProvs = pymeFacncEncProvs;
 	}
 
 }
